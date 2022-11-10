@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contatos.cs" />
-    <Compile Include="Agenda.cs">
+    <Compile Include="Agenda\Contatos.cs" />
+    <Compile Include="Agenda\Agenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Agenda.Designer.cs">
+    <Compile Include="Agenda\Agenda.Designer.cs">
       <DependentUpon>Agenda.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Agenda\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Agenda.resx">
+    <EmbeddedResource Include="Agenda\Agenda.resx">
       <DependentUpon>Agenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
