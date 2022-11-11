@@ -38,7 +38,7 @@ namespace EstudandoC_Sharp
             contato.LastName = lastName;
             contato.Email = email;
             contato.Tel = tel;
-            contato.Organizacao = org.ToUpper();
+			contato.Organization = org.ToUpper();
 
             return contato;
         }
@@ -47,7 +47,12 @@ namespace EstudandoC_Sharp
         {
             int idx = e.RowIndex;                        
             var data = gridData.Rows[idx].Cells["Id"].Value;
-            MessageBox.Show(data.ToString());
+            var subjectData = contatosAgenda.Find(p => p.Id == (int) data);
+
+            DetalhesContato detalhesContato = new DetalhesContato(subjectData);
+            detalhesContato.ShowDialog();
+
+            gridData.Refresh();
         }
     }
 }

@@ -13,6 +13,6 @@ namespace EstudandoC_Sharp
         public string LastName { get; set; }
         public string Tel { get; set; }
         public string Email { get; set; }
-        public string Organizacao { get; set; }
+        public string Organization { get; set; }
     }
 }
