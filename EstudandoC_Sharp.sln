@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstudandoC_Sharp", "EstudandoC_Sharp.csproj", "{F75D5F79-25FA-463D-9CDB-81C75DA9A08C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module1_CsharpUdemy", "..\Module1_CsharpUdemy\Module1_CsharpUdemy.csproj", "{5976A844-4566-4076-80CB-1DAD4FB72A25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F75D5F79-25FA-463D-9CDB-81C75DA9A08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F75D5F79-25FA-463D-9CDB-81C75DA9A08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F75D5F79-25FA-463D-9CDB-81C75DA9A08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5976A844-4566-4076-80CB-1DAD4FB72A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5976A844-4566-4076-80CB-1DAD4FB72A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5976A844-4566-4076-80CB-1DAD4FB72A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5976A844-4566-4076-80CB-1DAD4FB72A25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
