@@ -1,0 +1,13 @@
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.AssemblyReference.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.SuggestedBindingRedirects.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.CoreCompileInputs.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\View.ConsoleApp.exe.config
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\View.ConsoleApp.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\View.ConsoleApp.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\Business.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\DataAccess.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\Business.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\DataAccess.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.CopyComplete
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.pdb
