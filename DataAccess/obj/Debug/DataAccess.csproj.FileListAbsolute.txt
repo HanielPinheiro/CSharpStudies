@@ -1,9 +1,0 @@
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\bin\Debug\DataAccess.dll
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\bin\Debug\DataAccess.pdb
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\obj\Debug\DataAccess.dll
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\obj\Debug\DataAccess.pdb
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\bin\Debug\Model.dll
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\DataAccess\bin\Debug\Model.pdb
