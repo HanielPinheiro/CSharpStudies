@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrudManager.cs" />
-    <Compile Include="InputValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="InsertData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,9 +52,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataManager\DataManager.csproj">
+    <ProjectReference Include="..\Business\BLL.csproj">
+      <Project>{80fd2882-2c77-4abb-ba16-8bb76c3e1691}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataManager\Model.csproj">
       <Project>{5bb8fe24-9a99-4fb2-9096-01f70447be61}</Project>
-      <Name>DataManager</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

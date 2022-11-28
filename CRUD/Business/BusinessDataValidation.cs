@@ -1,22 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace View.ConsoleApp
+namespace Business
 {
-    public class InputValidation
+    public class BusinessDataValidation
     {
-
-        public bool IsInteger(string number)
+        public bool IsValidId(string id)
         {
-            return int.TryParse(number, out int result);
+            if (IsPositiveInteger(id))
+                if (Convert.ToInt32(id) <= 0)
+                    return false;
+                else
+                    return true;
+            else
+                return false;
         }
 
-        public bool IsLong(string number)
+        public bool IsValidAge(string age)
         {
-            return long.TryParse(number, out long result);
+            if (IsPositiveInteger(age))
+                if (Convert.ToInt32(age) <= 18)
+                    return false;
+                else
+                    return true;
+            else
+                return true;
         }
 
         public bool IsPositiveInteger(string number)
@@ -33,9 +45,10 @@ namespace View.ConsoleApp
         }
         public bool IsValidTel(string tel)
         {
-            if(tel?.Length>=12)
+            if (tel?.Length >= 12)
                 return true;
             return false;
         }
+
     }
 }

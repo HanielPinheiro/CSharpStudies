@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Xml.Linq;
 
 namespace DataAccess
 {
-    public class DataManipulation
+    public class DataAccessObject
     {
-        public List<User> users { get; set; }
-       
+        private List<User> users = new List<User>();
+
         public bool Create(ArrayList dataObject)
         {
             User newUser = new User();

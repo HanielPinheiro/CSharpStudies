@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "..\Business\Business.csproj", "{80FD2882-2C77-4ABB-BA16-8BB76C3E1691}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "..\Business\BLL.csproj", "{80FD2882-2C77-4ABB-BA16-8BB76C3E1691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{10A2C79E-4AF1-4733-A229-C8F6F0722B55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DataAccess\DAL.csproj", "{10A2C79E-4AF1-4733-A229-C8F6F0722B55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View.ConsoleApp", "..\View.ConsoleApp\View.ConsoleApp.csproj", "{31929431-CBBE-410E-863D-D3741E59A431}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View.WinFormApp", "..\View.WinFormApp\View.WinFormApp.csproj", "{BF0114E3-F64A-4A3B-AAB6-D05ADF88E1C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManager", "..\DataManager\DataManager.csproj", "{5BB8FE24-9A99-4FB2-9096-01F70447BE61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\DataManager\Model.csproj", "{5BB8FE24-9A99-4FB2-9096-01F70447BE61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

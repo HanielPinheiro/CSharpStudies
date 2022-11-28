@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,11 @@ namespace View.ConsoleApp
 {
     public class InsertData
     {
-        InputValidation inputValidation;
+        BusinessDataValidation dataManipulation;
+
         public InsertData()
         {
-            inputValidation = new InputValidation();
+            dataManipulation = new BusinessDataValidation();
         }
 
         public int InsertID()
@@ -22,16 +24,14 @@ namespace View.ConsoleApp
                 Console.WriteLine("\nInsert the user id:");
                 idInserted = Console.ReadLine();
 
-                if (inputValidation.IsPositiveInteger(idInserted))
-                {
+                if (dataManipulation.IsValidId(idInserted))
                     return Convert.ToInt32(idInserted);
-                }
                 else
                     Console.WriteLine("\nInvalid id");
             }
         }
 
-        public string insertName()
+        public string InsertName()
         {
             string name = null;
             while (true)
@@ -44,7 +44,7 @@ namespace View.ConsoleApp
 
         }
 
-        public string insertLastName()
+        public string InsertLastName()
         {
             string lastName = null;
             while (true)
@@ -57,14 +57,14 @@ namespace View.ConsoleApp
         }
 
 
-        public int insertAge()
+        public int InsertAge()
         {
             string ageInserted = null;
             while (true)
             {
                 Console.WriteLine("\nInsert the user age:");
                 ageInserted = Console.ReadLine();
-                if (inputValidation.IsPositiveInteger(ageInserted) && ageInserted?.Length > 0)
+                if (dataManipulation.IsValidAge(ageInserted))
                     return Convert.ToInt32(ageInserted);
                 else
                     Console.WriteLine("\nInvalid age");
@@ -72,14 +72,14 @@ namespace View.ConsoleApp
 
         }
 
-        public string insertEmail()
+        public string InsertEmail()
         {
             string email = null;
             while (true)
             {
                 Console.WriteLine("\nInsert the user email:");
                 email = Console.ReadLine();
-                if (inputValidation.IsValidEmail(email))
+                if (dataManipulation.IsValidEmail(email))
                     return email;
                 else
                     Console.WriteLine("\nInvalid email");
@@ -87,30 +87,30 @@ namespace View.ConsoleApp
             }
         }
 
-        public long insertTel()
+        public long InsertTel()
         {
             string tel = null;
             while (true)
             {
                 Console.WriteLine("\nInsert the user phone with DDD and DDI (5511912345678):");
                 tel = Console.ReadLine();
-                if (inputValidation.IsValidTel(tel))
+                if (dataManipulation.IsValidTel(tel))
                     return long.Parse(tel);
                 else
-                    Console.WriteLine("\nInvalid Phone!");
+                    Console.WriteLine("\nInvalid Phone number!");
             }
         }
 
-        public string insertNation()
+        public string InsertNation()
         {
             string nation = null;
             while (true)
             {
-                Console.WriteLine("\nInsert the user coutry:");
+                Console.WriteLine("\nInsert the user country:");
                 nation = Console.ReadLine();
                 if (nation?.Length > 0)
                     return nation;
-            }            
+            }
         }
     }
 }
