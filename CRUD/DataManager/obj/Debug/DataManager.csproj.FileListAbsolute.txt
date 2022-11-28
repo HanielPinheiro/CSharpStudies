@@ -1,2 +1,13 @@
 E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\DataManager\obj\Debug\DataManager.csproj.AssemblyReference.cache
 E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\DataManager\obj\Debug\DataManager.csproj.CoreCompileInputs.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.csproj.AssemblyReference.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.csproj.CoreCompileInputs.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataManager.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataManager.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\Business.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataAccess.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\Business.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataAccess.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.csproj.CopyComplete
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.pdb

@@ -16,3 +16,5 @@ E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\V
 E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.CoreCompileInputs.cache
 E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.exe
 E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\DataManager.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\bin\Debug\DataManager.pdb

@@ -1,51 +1,79 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace DataAccess
 {
     public class DataManipulation
     {
-        void CreateNew(List<User> listUsers)
+        public List<User> users { get; set; }
+       
+        public bool Create(ArrayList dataObject)
         {
-            
+            User newUser = new User();
+            newUser.Id = (int)dataObject[0];
+            newUser.Name = (string)dataObject[1];
+            newUser.LastName = (string)dataObject[2];
+            newUser.Age = (int)dataObject[3];
+            newUser.Email = (string)dataObject[4];
+            newUser.Tel = (long)dataObject[5];
+            newUser.Country = (string)dataObject[6];
+            users.Add(newUser);
+            return true;
         }
 
-        void Read()
+        public ArrayList Read(int id)
         {
-            int idUser;
-            while (true)
+            ArrayList data = new ArrayList();
+            if (users.Find(p => p.Id == id) != null)
             {
-                Console.WriteLine("\nDigite o id do usuário a ser lido:");
-                if (int.TryParse(Console.ReadLine(), out idUser) && users.Contains(users[idUser]))
-                    break;
+                User targetUser = users[id];                
+                data.Add(targetUser.Id);
+                data.Add(targetUser.Name);
+                data.Add(targetUser.LastName);
+                data.Add(targetUser.Age);
+                data.Add(targetUser.Email);
+                data.Add(targetUser.Tel);
+                data.Add(targetUser.Country);
             }
-
-            Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", users[idUser].Id, users[idUser].Name, users[idUser].LastName,
-                users[idUser].Age, users[idUser].Email, users[idUser].Tel, users[idUser].Country);
-
+            return data;
         }
 
-        void Update()
+        public bool Delete(int id)
         {
-            
-
-            users[idUser] = newUser;
+            User targetUser = users[id];
+            users.Remove(targetUser);
+            return true;
         }
 
-        void Delete()
+        public bool Update(ArrayList dataObject)
         {
-            int idUser;
-            while (true)
+            int id = (int)dataObject[0];
+            User targetUser = users.Find(p => p.Id == id);
+            targetUser.Name = (string)dataObject[1];
+            targetUser.LastName = (string)dataObject[2];
+            targetUser.Age = (int)dataObject[3];
+            targetUser.Email = (string)dataObject[4];
+            targetUser.Tel = (long)dataObject[5];
+            targetUser.Country = (string)dataObject[6];
+            return true;
+        }
+
+        public List<string> listData()
+        {
+            List<string> returnList = new List<string>();
+            int total = users.Count();
+            if (total > 0)
             {
-                Console.WriteLine("\nDigite o id do usuário a ser alterado:");
-                if (int.TryParse(Console.ReadLine(), out idUser))
-                    break;
+                returnList.Add("\nId | Name | Email ");
+                for (int user = 0; user < total; user++)
+                    returnList.Add(users[user].Id + " | " + users[user].Name + " | " + users[user].Email);
             }
-
-            users.Remove(users[idUser]);
+            return returnList;
         }
     }
 }

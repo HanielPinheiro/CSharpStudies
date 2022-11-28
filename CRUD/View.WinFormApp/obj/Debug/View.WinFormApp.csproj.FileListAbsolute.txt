@@ -1,0 +1,10 @@
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.exe.config
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.AssemblyReference.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.SuggestedBindingRedirects.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.Properties.Resources.resources
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.GenerateResource.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.CoreCompileInputs.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.pdb

@@ -1,5 +1,4 @@
-﻿using DataManager;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,54 +6,56 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Collections;
 
 namespace View.ConsoleApp
 {
-    internal class Program
+    internal static class Program
     {
+        [STAThread]
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Program started! Pres 'S' to exit");
+            Console.WriteLine();
+            Run();
+        }
 
-        UsersDAO intermediate = new UsersDAO();
-        
-
-        void Main(string[] args)
+        public static void Run()
         {
             bool control = true;
-
-            Console.WriteLine("Programa iniciado! Para sair pressione 'S'");
-            Console.WriteLine();
+            CrudManager manager = new CrudManager();
 
             while (control)
             {
-                intermediate.List();
+                manager.ListData();
 
-                Console.WriteLine("\nSelecione uma tecla da lista: C.R.U.D!");
+                Console.WriteLine("\nSelect one key of list: C.R.U.D!");
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 switch (key.Key)
                 {
                     default:
-                        Console.WriteLine("Tecla inválida!");
+                        Console.WriteLine("\nInvalid Console key!");
                         break;
                     case ConsoleKey.C:
-                        intermediate.CreateNew();
+                        manager.Create();
                         break;
                     case ConsoleKey.R:
-                        intermediate.Read();
+                        manager.Read();
                         break;
                     case ConsoleKey.U:
-                        intermediate.Update();
+                        manager.Update();
                         break;
                     case ConsoleKey.D:
-                        intermediate.Delete();
+                        manager.Delete();
                         break;
                     case ConsoleKey.S:
                         control = false;
                         break;
                 }
             }
-            Console.WriteLine("Encerrando programa!");
+            Console.WriteLine("\nClosing program!");
         }
 
-       
     }
 }

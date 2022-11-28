@@ -19,7 +19,7 @@ namespace View.ConsoleApp
             string idInserted = null;
             while (true)
             {
-                Console.WriteLine("\nDigite o id do usuário:");
+                Console.WriteLine("\nInsert the user id:");
                 idInserted = Console.ReadLine();
 
                 if (inputValidation.IsPositiveInteger(idInserted))
@@ -27,36 +27,47 @@ namespace View.ConsoleApp
                     return Convert.ToInt32(idInserted);
                 }
                 else
-                    Console.WriteLine("\nId inválido");
+                    Console.WriteLine("\nInvalid id");
             }
         }
 
         public string insertName()
         {
-            Console.WriteLine("\nDigite o nome do usuário:");
-            return Console.ReadLine();
+            string name = null;
+            while (true)
+            {
+                Console.WriteLine("\nInsert the user name:");
+                name = Console.ReadLine();
+                if (name?.Length > 0)
+                    return name;
+            }
+
         }
 
         public string insertLastName()
         {
-            Console.WriteLine("\nDigite o sobrenome do usuário:");
-            return Console.ReadLine();
+            string lastName = null;
+            while (true)
+            {
+                Console.WriteLine("\nInsert the user lastname:");
+                lastName = Console.ReadLine();
+                if (lastName?.Length > 0)
+                    return lastName;
+            }
         }
 
 
         public int insertAge()
         {
             string ageInserted = null;
-
             while (true)
             {
-                Console.WriteLine("\nDigite a idade do usuário:");
+                Console.WriteLine("\nInsert the user age:");
                 ageInserted = Console.ReadLine();
-
-                if (inputValidation.IsPositiveInteger(ageInserted))
+                if (inputValidation.IsPositiveInteger(ageInserted) && ageInserted?.Length > 0)
                     return Convert.ToInt32(ageInserted);
                 else
-                    Console.WriteLine("\nIdade inválida");
+                    Console.WriteLine("\nInvalid age");
             }
 
         }
@@ -64,15 +75,14 @@ namespace View.ConsoleApp
         public string insertEmail()
         {
             string email = null;
-
             while (true)
             {
-                Console.WriteLine("\nDigite o email do usuário:");
+                Console.WriteLine("\nInsert the user email:");
                 email = Console.ReadLine();
                 if (inputValidation.IsValidEmail(email))
                     return email;
                 else
-                    Console.WriteLine("\nEmail inválido");
+                    Console.WriteLine("\nInvalid email");
 
             }
         }
@@ -80,22 +90,27 @@ namespace View.ConsoleApp
         public long insertTel()
         {
             string tel = null;
-
             while (true)
             {
-                Console.WriteLine("\nDigite o telefone do usuário com DDI e DDD (5511912345678):");
+                Console.WriteLine("\nInsert the user phone with DDD and DDI (5511912345678):");
                 tel = Console.ReadLine();
                 if (inputValidation.IsValidTel(tel))
                     return long.Parse(tel);
                 else
-                    Console.WriteLine("\nTelefone inválido!");
+                    Console.WriteLine("\nInvalid Phone!");
             }
         }
 
         public string insertNation()
         {
-            Console.WriteLine("\nDigite a nação do usuário:");
-            return Console.ReadLine();
+            string nation = null;
+            while (true)
+            {
+                Console.WriteLine("\nInsert the user coutry:");
+                nation = Console.ReadLine();
+                if (nation?.Length > 0)
+                    return nation;
+            }            
         }
     }
 }

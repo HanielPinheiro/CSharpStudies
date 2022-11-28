@@ -13,7 +13,6 @@ namespace Business
         {
             if (id <= 0)
                 return false;
-
             return true;
         }
 
@@ -21,22 +20,16 @@ namespace Business
         {
             if (age < 18)
                 return false;
-
             return true;
         }
 
-        //public bool IsValidTel(string tel, List<User> users)
-        //{
-        //    if (!long.TryParse(tel, out long result))
-        //        return false;
+        public bool IsValidEmail(string email)
+        {
+            if (!email.Contains("@"))
+                return false;
+            return true;
 
-        //    long telephone = long.Parse(tel);
-        //    List<long> telephones = new List<long>();
+        }
 
-        //    foreach (User user in users)
-        //        telephones.Add(user.Tel);
-
-        //    return !telephones.Contains(telephone);
-        //}
     }
 }
