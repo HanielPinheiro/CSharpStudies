@@ -12,8 +12,9 @@ namespace View.ConsoleApp
 {
     internal class Program
     {
-        
+
         UsersDAO intermediate = new UsersDAO();
+        
 
         void Main(string[] args)
         {
@@ -55,7 +56,5 @@ namespace View.ConsoleApp
         }
 
        
-
-        
     }
 }

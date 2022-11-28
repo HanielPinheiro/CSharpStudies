@@ -1,0 +1,2 @@
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\DataManager\obj\Debug\DataManager.csproj.AssemblyReference.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\DataManager\obj\Debug\DataManager.csproj.CoreCompileInputs.cache

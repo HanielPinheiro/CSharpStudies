@@ -11,3 +11,8 @@
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.CopyComplete
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.exe
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.pdb
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.AssemblyReference.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.SuggestedBindingRedirects.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.csproj.CoreCompileInputs.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.exe
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\View.ConsoleApp\obj\Debug\View.ConsoleApp.pdb

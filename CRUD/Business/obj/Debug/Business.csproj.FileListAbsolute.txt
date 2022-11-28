@@ -4,3 +4,9 @@
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\Business\obj\Debug\Business.dll
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\Business\obj\Debug\Business.pdb
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\bin\Debug\Business.dll
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\bin\Debug\Business.pdb
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\obj\Debug\Business.csproj.AssemblyReference.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\obj\Debug\Business.dll
+E:\GitSource\Repos\HanielPinheiro\CSharpStudies\CRUD\Business\obj\Debug\Business.pdb
