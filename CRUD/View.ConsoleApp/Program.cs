@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +13,28 @@ namespace View.ConsoleApp
 {
     internal static class Program
     {
+        private static CrudManager manager = new CrudManager();
+
         [STAThread]
         static void Main(string[] args)
         {
-            Console.WriteLine("Program started! Pres 'S' to exit");
+            Console.WriteLine("Program started! Press 'S' to exit");
             Console.WriteLine();
             Run();
         }
 
         public static void Run()
         {
-            bool control = true;
-            CrudManager manager = new CrudManager();
+            bool control = true;            
+
+            Console.WriteLine("\nHello, welcome to the Contacts Manger, you have 0 contacts registered.");
+            Console.WriteLine("\nYou can register until " + (BusinessDataValidation.availableContacts - manager.GetCount()) + " contacts. ");;
 
             while (control)
             {
                 manager.ListData();
-
-                Console.WriteLine("\nSelect one key of list: C.R.U.D!");
+               
+                Console.WriteLine("\n\nSelect one key of list: C.R.U.D!\n");
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 switch (key.Key)

@@ -1,43 +1,57 @@
 ﻿using Model;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Business
 {
     public class DataManipulation
     {
-        private static  BusinessDataValidation businessValidator;
-        private static  List<User> users;
+        private static DataAccessObject DAO = new DataAccessObject();
+        private int count = 0;
 
-        public DataManipulation()
+        public void UpdateCount() { count = DAO.ListCount(); }
+
+        public int GetCount() { UpdateCount(); return count; }
+
+        public int ReturnId()
         {
-            businessValidator = new BusinessDataValidation();
-            users = new List<User>();
+            UpdateCount();
+            if (count == 0) return 1;
+            else if (count == BusinessDataValidation.availableContacts) return -1;
+            else return DAO.NewID(BusinessDataValidation.availableContacts);
+        }
+        public List<int> GetIds() { return DAO.GetRegisteredIds(); }
+
+        public bool IsEmailRegistered(string email)
+        {
+            UpdateCount();
+            if (count > 0) return DAO.IsEmailRegistered(email);
+            else return false;
         }
 
-        public bool IdExist(int id)
+        public bool IsPhoneRegistered(long tel)
         {
-            if (users.Find(user => user.Id == id) != null))
-                    return false;
-            return true;
+            UpdateCount();
+            if (count > 0) return DAO.IsPhoneRegistered(tel);
+            else return false;
         }
 
-        public bool EmailExist(int id)
-        {
-            if (users.Find(user => user.Id == id) != null))
-                    return false;
-            return true;
-        }
+        public bool Create(User newUser) { return DAO.Create(newUser); }
 
-        public bool PhoneExist(int id)
-        {
-            if (users.Find(user => user.Id == id) != null))
-                    return false;
-            return true;
-        }
+        public User Read(int id) { return DAO.Read(id); }
+
+        public bool Update(User updatedUser, int choosedId) { return DAO.Update(updatedUser, choosedId); }
+
+        public bool Delete(int id) { return DAO.Delete(id); }
+
+        public List<string> ListData() { return DAO.ListData(); }
+
+        public User FindUserById(int id) {   return DAO.FindUserById(id);  }
 
     }
 }

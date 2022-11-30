@@ -9,3 +9,10 @@
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.exe
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.pdb
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.VisualFormer.resources
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\Business.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataManager.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataAccess.dll
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\Business.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataManager.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataAccess.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.CopyComplete

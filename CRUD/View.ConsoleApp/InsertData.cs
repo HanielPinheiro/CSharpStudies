@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace View.ConsoleApp
 {
@@ -16,18 +17,17 @@ namespace View.ConsoleApp
             dataManipulation = new BusinessDataValidation();
         }
 
-        public int InsertID()
+        public int InsertId()
         {
-            string idInserted = null;
+            string id = null;
             while (true)
             {
-                Console.WriteLine("\nInsert the user id:");
-                idInserted = Console.ReadLine();
-
-                if (dataManipulation.IsValidId(idInserted))
-                    return Convert.ToInt32(idInserted);
+                Console.WriteLine("\nInsert the id:");
+                id = Console.ReadLine();
+                if (id?.Length > 0 && int.TryParse(id, out int insertedId))
+                    return insertedId;
                 else
-                    Console.WriteLine("\nInvalid id");
+                    Console.WriteLine("\nInvalid id, please insert a integer number, higher than zero.");
             }
         }
 

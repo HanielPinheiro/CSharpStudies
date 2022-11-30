@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 
 namespace View.ConsoleApp
@@ -14,34 +15,25 @@ namespace View.ConsoleApp
     {
 
         private InsertData insert = new InsertData();
-        private DataManipulation manipulator = new DataManipulation();
+        private static DataManipulation manipulator = new DataManipulation();
 
         public void Create()
         {
-            User newUser = new User();
-
-           
-            int id = insert.InsertID();
-            while (true){  if (manipulator.IdExist(id)) { break; } else { Console.WriteLine("Invalid Id"); id = insert.InsertID(); }; }          
-
+            int id = manipulator.ReturnId();
             string name = insert.InsertName();
             string lastName = insert.InsertLastName();
             int age = insert.InsertAge();
 
             #region Email
             string email = insert.InsertEmail();
-            while (true) {
-                List<string> emails = new List<string>();
-                foreach (User user in users)
-                    emails.Add(user.Email);
-
-                if (emails.Contains(email))
+            while (true)
+            {
+                if (!manipulator.IsEmailRegistered(email)) { break; }
+                else
                 {
                     Console.WriteLine("\nEmail was registered, please insert the email again.");
                     email = insert.InsertEmail();
                 }
-                else
-                    break;
             }
             #endregion
 
@@ -49,23 +41,19 @@ namespace View.ConsoleApp
             long tel = insert.InsertTel();
             while (true)
             {
-                List<long> tels = new List<long>();
-                foreach (User user in users)
-                    tels.Add(user.Tel);
-
-                if (tels.Contains(tel))
+                if (!manipulator.IsPhoneRegistered(tel)) { break; }
+                else
                 {
                     Console.WriteLine("\nTelephone was registered, insert another.");
                     tel = insert.InsertTel();
                 }
-                else
-                    break;
             }
             #endregion
 
             string country = insert.InsertNation();
 
             #region Add User to list
+            User newUser = new User();
             newUser.Id = id;
             newUser.Name = name;
             newUser.LastName = lastName;
@@ -73,138 +61,149 @@ namespace View.ConsoleApp
             newUser.Email = email;
             newUser.Tel = tel;
             newUser.Country = country;
-            users.Add(newUser);
+            if (manipulator.Create(newUser)) Console.WriteLine("\nUser registered successfully!");
+            else Console.WriteLine("\nFail in register the new User.");
             #endregion
+        }
+
+        public int GetTargetId()
+        {
+            Console.WriteLine("\nPlease, select the id which you want to verify the informations\n");
+
+            List<int> registeredIds = manipulator.GetIds();
+            ListIds(registeredIds);
+
+            int choosedId = insert.InsertId();
+
+            while (true)
+            {
+                if (!registeredIds.Contains(choosedId))
+                {
+                    Console.WriteLine("\nYou inserted a inexistent id, please insert again.");
+                    choosedId = insert.InsertId();
+                }
+                else
+                    break;
+            }
+
+            return choosedId;
         }
 
         public void Read()
         {
-            Console.WriteLine("\nPlease, insert the id which you want to verify the informations");
-
-            int id = insert.InsertID();
-            User target = null;
-            while (true)
+            if (manipulator.GetCount() > 0)
             {
-                if (users.Find(user => user.Id == id) == null)
-                {
-                    Console.WriteLine("\nPlease, verify and insert the ID again");
-                    id = insert.InsertID();
-                }
-                else
-                {
-                    target = users.Find(user => user.Id == id);
-                    break;
-                }
-            }
+                int choosedId = GetTargetId();
 
-            Console.WriteLine("Id: " + target.Id + "\nName: " + target.Name + "\nLastname: " + target.LastName + "\nAge: " + target.Age +
-                "\nEmail: " + target.Age + "\nTel: " + target.Tel + "\nCountry: " + target.Country);
+                User targetUser = manipulator.Read(choosedId);
+                if (targetUser != null)
+                {
+                    Console.WriteLine("\nId: " + targetUser.Id + "\nName: " + targetUser.Name + "\nLastname: " + targetUser.LastName + "\nAge: " + targetUser.Age +
+                        "\nE-mail: " + targetUser.Email + "\nTel: " + targetUser.Tel + "\nCountry: " + targetUser.Country);
+                }
+                else Console.WriteLine("\nFailed in the process of read data, verify if user exists.");
+            }
+            else Console.WriteLine("\nHave no data to read.");
         }
 
         public void Update()
         {
-            #region ID
-            int id = insert.InsertID();
-            while (true)
+            if (manipulator.GetCount() > 0)
             {
-                if (users.Find(user => user.Id == id) == null)
+                int choosedId = GetTargetId();
+                User updatedUser = manipulator.FindUserById(choosedId);
+                string email = "";
+                long tel = 0;
+                bool control = true;
+
+                while (control)
                 {
-                    Console.WriteLine("\nPlease, verify and digit the ID which you want to update");
-                    id = insert.InsertID();
+
+                    Console.WriteLine("\nSelect one key to edit a option about this user: ");
+                    Console.WriteLine("\nN - Update name\nL - Update Lastname\nA - Update age\nE - Update e-mail\nP - Update phone\nC - Update country");
+                    Console.WriteLine("\nWhen finished press 'S' to turn back to menu ");
+                    ConsoleKeyInfo key = Console.ReadKey();
+
+                    switch (key.Key)
+                    {
+                        default:
+                            Console.WriteLine("\nInvalid Console key!");
+                            break;
+                        case ConsoleKey.N:
+                            updatedUser.Name = insert.InsertName();
+                            break;
+                        case ConsoleKey.L:
+                            updatedUser.LastName = insert.InsertLastName();
+                            break;
+                        case ConsoleKey.A:
+                            updatedUser.Age = insert.InsertAge();
+                            break;
+                        case ConsoleKey.E:
+                            email = insert.InsertEmail();
+                            while (true)
+                            {
+                                if (!manipulator.IsEmailRegistered(email)) { break; }
+                                else
+                                {
+                                    Console.WriteLine("\nEmail was registered, please insert the email again.");
+                                    email = insert.InsertEmail();
+                                }
+                            }
+                            updatedUser.Email = email;
+                            break;
+                        case ConsoleKey.P:
+                            tel = insert.InsertTel();
+                            while (true)
+                            {
+                                if (!manipulator.IsPhoneRegistered(tel)) { break; }
+                                else
+                                {
+                                    Console.WriteLine("\nTelephone was registered, insert another.");
+                                    tel = insert.InsertTel();
+                                }
+                            }
+                            updatedUser.Tel = tel;
+                            break;
+                        case ConsoleKey.C:
+                            updatedUser.Country = insert.InsertNation();
+                            break;
+                        case ConsoleKey.S:
+                            control = false;
+                            break;
+                    }
                 }
-                else
-                    break;
 
+                #region Add User to list
+                if (manipulator.Update(updatedUser, choosedId)) Console.WriteLine("\nUser updated successfully!");
+                else Console.WriteLine("\nFail in update the user → " + choosedId);
+                #endregion
             }
-            #endregion
+            else Console.WriteLine("\nHave no data to update.");
 
-
-            string name = insert.InsertName();
-            string lastName = insert.InsertLastName();
-            int age = insert.InsertAge();
-
-
-            #region Email
-            string email = insert.InsertEmail();
-            while (true)
-            {
-                List<string> emails = new List<string>();
-                foreach (User user in users)
-                    emails.Add(user.Email);
-
-                if (emails.Contains(email))
-                {
-                    Console.WriteLine("\nEmail was registered, please insert the email again.");
-                    email = insert.InsertEmail();
-                }
-                else
-                    break;
-            }
-            #endregion
-
-            #region Phone number
-            long tel = insert.InsertTel();
-            while (true)
-            {
-                List<long> tels = new List<long>();
-                foreach (User user in users)
-                    tels.Add(user.Tel);
-
-                if (tels.Contains(tel))
-                {
-                    Console.WriteLine("\nTelephone was registered, insert another.");
-                    tel = insert.InsertTel();
-                }
-                else
-                    break;
-            }
-            #endregion
-
-            string country = insert.InsertNation();
-
-            #region Update user
-            User target = users.Find(user => user.Id == id);
-            target.Name = name;
-            target.LastName = lastName;
-            target.Age = age;
-            target.Email = email;
-            target.Tel = tel;
-            target.Country = country;
-            #endregion
         }
 
         public void Delete()
         {
-            Console.WriteLine("\nPlease insert the id which you want to delete from DB");
-
-            #region ID
-            int id = insert.InsertID();
-            while (true)
+            if (manipulator.GetCount() > 0)
             {
-                if (listUsers.Find(user => user.Id == id) == null)
-                {
-                    Console.WriteLine("\nPlease, verify and digit the ID which you want to update");
-                    id = insert.InsertID();
-                }
-                else
-                    break;
-
+                int targetId = GetTargetId();
+                if (manipulator.Delete(targetId)) Console.WriteLine("\nUser deleted successfully");
+                else Console.WriteLine("\nUser not deleted, proccess failed, check id and try again");
             }
-            #endregion
-
-            User target = users.Find(user => user.Id == id);
-            users.Remove(target);
-            Console.WriteLine("\nUser deleted successfully");
+            else Console.WriteLine("\nHave no data to delete.");
         }
 
         public void ListData()
         {
-            if (users.Count() > 0)
-                foreach (User userInfo in users)
-                    Console.WriteLine(userInfo.Id + " | " + userInfo.Name + " | " + userInfo.Email);
+            List<string> dataList = manipulator.ListData();
+            if (dataList.Count() > 0)
+                foreach (string userInfo in dataList) Console.WriteLine(userInfo);
             else
-                Console.WriteLine("Database is empty!");
+                Console.WriteLine("\nDatabase is empty!");
         }
 
+        public void ListIds(List<int> registeredIds) { foreach (int id in registeredIds) Console.WriteLine("ID: " + id); }
+
+        public int GetCount() { return manipulator.GetCount(); }
     }
 }

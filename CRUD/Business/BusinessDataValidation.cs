@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,26 +10,18 @@ namespace Business
 {
     public class BusinessDataValidation
     {
-        public bool IsValidId(string id)
+
+        public static int availableContacts = 10;
+
+        public bool IsValidAge(string age)
         {
-            if (IsPositiveInteger(id))
-                if (Convert.ToInt32(id) <= 0)
+            if (IsPositiveInteger(age))
+                if (Convert.ToInt32(age) <= 11)
                     return false;
                 else
                     return true;
             else
                 return false;
-        }
-
-        public bool IsValidAge(string age)
-        {
-            if (IsPositiveInteger(age))
-                if (Convert.ToInt32(age) <= 18)
-                    return false;
-                else
-                    return true;
-            else
-                return true;
         }
 
         public bool IsPositiveInteger(string number)
@@ -48,7 +41,6 @@ namespace Business
             if (tel?.Length >= 12)
                 return true;
             return false;
-        }
-
+        }       
     }
 }
