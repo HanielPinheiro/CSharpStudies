@@ -16,3 +16,4 @@
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataManager.pdb
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataAccess.pdb
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.CopyComplete
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.Create.resources

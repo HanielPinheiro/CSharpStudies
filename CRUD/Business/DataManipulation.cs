@@ -21,9 +21,7 @@ namespace Business
         public int ReturnId()
         {
             UpdateCount();
-            if (count == 0) return 1;
-            else if (count == BusinessDataValidation.availableContacts) return -1;
-            else return DAO.NewID(BusinessDataValidation.availableContacts);
+            return DAO.NewID();
         }
         public List<int> GetIds() { return DAO.GetRegisteredIds(); }
 

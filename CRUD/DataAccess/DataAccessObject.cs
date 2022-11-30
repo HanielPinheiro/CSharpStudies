@@ -12,6 +12,7 @@ namespace DataAccess
     public class DataAccessObject
     {
         private List<User> users = new List<User>();
+        private int lastId = 0;
 
         public int ListCount() { return users.Count; }
 
@@ -22,17 +23,9 @@ namespace DataAccess
             return registeredIds;
         }
 
-        public int NewID(int limit)
+        public int NewID()
         {
-            List<int> registeredIds = GetRegisteredIds();
-            List<int> availableIds = new List<int>();
-
-            for(int i=1; i<= limit; i++)
-            {
-                if(!registeredIds.Contains(i))
-                    availableIds.Add(i);
-            }
-            return availableIds.Min();
+            return ++lastId;
         }
 
         public bool IsEmailRegistered(string email)
@@ -87,7 +80,7 @@ namespace DataAccess
             
             if (total > 0)
             {
-                returnList.Add("\nId | Name | Email ");
+                returnList.Add("\nId | Name | Email");
                 foreach(User orderedUser in users.OrderBy(p => p.Id).ToList())
                     returnList.Add(orderedUser.Id + " | " + orderedUser.Name + " | " + orderedUser.Email);
             }

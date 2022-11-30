@@ -16,7 +16,7 @@ namespace Business
         public bool IsValidAge(string age)
         {
             if (IsPositiveInteger(age))
-                if (Convert.ToInt32(age) <= 11)
+                if (Convert.ToInt32(age) <= 11 || Convert.ToInt32(age) >= 120)
                     return false;
                 else
                     return true;
