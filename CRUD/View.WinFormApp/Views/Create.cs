@@ -23,7 +23,7 @@ namespace View.WinFormApp
             manipulator = manipulatorReceived;
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void Button_Create_Click(object sender, EventArgs e)
         {
             if (VerifyName())
             {
@@ -106,7 +106,7 @@ namespace View.WinFormApp
                 return false;
         }
 
-        private void btnClean_Click_1(object sender, EventArgs e)
+        private void Button_Clear_Click(object sender, EventArgs e)
         {
             Field_Name.Text = "";
             Field_LastName.Text = "";

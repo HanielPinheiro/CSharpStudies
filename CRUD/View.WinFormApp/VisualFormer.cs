@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace View.WinFormApp
 {
@@ -67,14 +68,14 @@ namespace View.WinFormApp
 
                     Button btnDelete = new Button();
                     btnDelete.Text = "Delete User";
-                    btnDelete.Click += (sender, EventArgs) => { DeleteData(sender, EventArgs, Convert.ToInt32(id)); };
-                    btnDelete.Dock = DockStyle.Fill;
+                    btnDelete.Click += (sender, EventArgs) => { DeleteData(sender, EventArgs, Convert.ToInt32(id), email); };
+                    btnDelete.Dock = DockStyle.Top;
                     btnDelete.TextAlign = ContentAlignment.MiddleCenter;
 
                     Button btnUpdate = new Button();
                     btnUpdate.Text = "Update Info";
-                    btnUpdate.Click += (sender, EventArgs) => { UpdateData(sender, EventArgs, Convert.ToInt32(id)); };
-                    btnUpdate.Dock = DockStyle.Fill;
+                    btnUpdate.Click += (sender, EventArgs) => { UpdateData(sender, EventArgs, manipulator.Read(Convert.ToInt32(id))); };
+                    btnUpdate.Dock = DockStyle.Top;
                     btnUpdate.TextAlign = ContentAlignment.MiddleCenter;
                     #endregion
 
@@ -105,17 +106,22 @@ namespace View.WinFormApp
         }
 
         public void ReadData(object sender, EventArgs e, int id)
-        {
+        {            
             User targetUser = manipulator.Read(id);
-
+            Read form = new Read(targetUser);
+            form.ShowDialog();
         }
-        public void UpdateData(object sender, EventArgs e, int id)
+        public void UpdateData(object sender, EventArgs e, User targetUser)
         {
-            User targetUser = manipulator.Read(id);
+            Update form = new Update(targetUser, manipulator);
+            form.ShowDialog();
+            ListData();
         }
-        public void DeleteData(object sender, EventArgs e, int id)
+        public void DeleteData(object sender, EventArgs e, int id, string email)
         {
-            User targetUser = manipulator.Read(id);
+            Delete form = new Delete(id, email, manipulator);
+            form.ShowDialog();
+            ListData();
         }
 
         private void Button_CreateNew_Click(object sender, EventArgs e)

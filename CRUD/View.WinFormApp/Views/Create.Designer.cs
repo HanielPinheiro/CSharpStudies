@@ -43,8 +43,8 @@
             this.Field_Phone = new System.Windows.Forms.TextBox();
             this.Field_Email = new System.Windows.Forms.TextBox();
             this.Field_Country = new System.Windows.Forms.TextBox();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnClean = new System.Windows.Forms.Button();
+            this.Button_Create = new System.Windows.Forms.Button();
+            this.Button_Clear = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +76,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(380, 71);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Create a New User";
+            this.label1.Text = "Create a Contact";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -97,8 +97,8 @@
             this.tableLayoutPanel2.Controls.Add(this.Field_Phone, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.Field_Email, 1, 4);
             this.tableLayoutPanel2.Controls.Add(this.Field_Country, 1, 5);
-            this.tableLayoutPanel2.Controls.Add(this.btnCreate, 1, 6);
-            this.tableLayoutPanel2.Controls.Add(this.btnClean, 0, 6);
+            this.tableLayoutPanel2.Controls.Add(this.Button_Create, 1, 6);
+            this.tableLayoutPanel2.Controls.Add(this.Button_Clear, 0, 6);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 74);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -245,33 +245,33 @@
             this.Field_Country.Size = new System.Drawing.Size(260, 26);
             this.Field_Country.TabIndex = 1;
             // 
-            // btnCreate
+            // Button_Create
             // 
-            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnCreate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(116, 250);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(260, 52);
-            this.btnCreate.TabIndex = 2;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = false;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.Button_Create.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Button_Create.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Button_Create.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.Button_Create.ForeColor = System.Drawing.Color.White;
+            this.Button_Create.Location = new System.Drawing.Point(116, 250);
+            this.Button_Create.Name = "Button_Create";
+            this.Button_Create.Size = new System.Drawing.Size(260, 52);
+            this.Button_Create.TabIndex = 2;
+            this.Button_Create.Text = "Create";
+            this.Button_Create.UseVisualStyleBackColor = false;
+            this.Button_Create.Click += new System.EventHandler(this.Button_Create_Click);
             // 
-            // btnClean
+            // Button_Clear
             // 
-            this.btnClean.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnClean.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnClean.ForeColor = System.Drawing.Color.White;
-            this.btnClean.Location = new System.Drawing.Point(4, 250);
-            this.btnClean.Name = "btnClean";
-            this.btnClean.Size = new System.Drawing.Size(105, 52);
-            this.btnClean.TabIndex = 3;
-            this.btnClean.Text = "Clear";
-            this.btnClean.UseVisualStyleBackColor = false;
-            this.btnClean.Click += new System.EventHandler(this.btnClean_Click_1);
+            this.Button_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.Button_Clear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Button_Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Button_Clear.ForeColor = System.Drawing.Color.White;
+            this.Button_Clear.Location = new System.Drawing.Point(4, 250);
+            this.Button_Clear.Name = "Button_Clear";
+            this.Button_Clear.Size = new System.Drawing.Size(105, 52);
+            this.Button_Clear.TabIndex = 3;
+            this.Button_Clear.Text = "Clear";
+            this.Button_Clear.UseVisualStyleBackColor = false;
+            this.Button_Clear.Click += new System.EventHandler(this.Button_Clear_Click);
             // 
             // Create
             // 
@@ -306,7 +306,7 @@
         private System.Windows.Forms.TextBox Field_Phone;
         private System.Windows.Forms.TextBox Field_Email;
         private System.Windows.Forms.TextBox Field_Country;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.Button Button_Create;
+        private System.Windows.Forms.Button Button_Clear;
     }
 }

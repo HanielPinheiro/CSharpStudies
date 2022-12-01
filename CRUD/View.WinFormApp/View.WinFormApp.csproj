@@ -90,6 +90,15 @@
     <EmbeddedResource Include="Views\Create.resx">
       <DependentUpon>Create.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Delete.resx">
+      <DependentUpon>Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Read.resx">
+      <DependentUpon>Read.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Update.resx">
+      <DependentUpon>Update.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VisualFormer.resx">
       <DependentUpon>VisualFormer.cs</DependentUpon>
     </EmbeddedResource>
