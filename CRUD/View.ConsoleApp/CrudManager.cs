@@ -121,7 +121,7 @@ namespace View.ConsoleApp
 
                     Console.WriteLine("\nSelect one key to edit a option about this user: ");
                     Console.WriteLine("\nN - Update name\nL - Update Lastname\nA - Update age\nE - Update e-mail\nP - Update phone\nC - Update country");
-                    Console.WriteLine("\nWhen finished press 'S' to turn back to menu ");
+                    Console.WriteLine("\nWhen finished press 'Esc' to turn back to menu ");
                     ConsoleKeyInfo key = Console.ReadKey();
 
                     switch (key.Key)
@@ -167,7 +167,7 @@ namespace View.ConsoleApp
                         case ConsoleKey.C:
                             updatedUser.Country = insert.InsertNation();
                             break;
-                        case ConsoleKey.S:
+                        case ConsoleKey.Escape:
                             control = false;
                             break;
                     }

@@ -18,7 +18,7 @@ namespace View.ConsoleApp
         [STAThread]
         static void Main(string[] args)
         {
-            Console.WriteLine("Program started! Press 'S' to exit");
+            Console.WriteLine("Program started! Press 'Esc' to exit");
             Console.WriteLine();
             Run();
         }
@@ -34,7 +34,7 @@ namespace View.ConsoleApp
             {
                 manager.ListData();
                
-                Console.WriteLine("\n\nSelect one key of list: C.R.U.D!\n");
+                Console.WriteLine("\n\nSelect one key of list: C.R.U.D - 'Esc' to exit\n");
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 switch (key.Key)
@@ -54,7 +54,7 @@ namespace View.ConsoleApp
                     case ConsoleKey.D:
                         manager.Delete();
                         break;
-                    case ConsoleKey.S:
+                    case ConsoleKey.Escape:
                         control = false;
                         break;
                 }
