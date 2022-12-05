@@ -8,45 +8,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Collections;
+using Model;
 
 namespace View.ConsoleApp
 {
     internal static class Program
     {
-        private static CrudManager manager = new CrudManager();
+        private static Manager manager = new Manager();
 
         [STAThread]
         static void Main(string[] args)
         {
-            Console.WriteLine("Program started! Press 'Esc' to exit");
-            Console.WriteLine();
-            Run();
+            try
+            {
+                Console.WriteLine("Program started! Press 'Esc' to exit");
+                Run();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.ReadLine();
+            }
         }
 
         public static void Run()
         {
-            bool control = true;            
-
-            Console.WriteLine("\nHello, welcome to the Contacts Manger, you have 0 contacts registered.");
-            Console.WriteLine("\nYou can register until " + (BusinessDataValidation.availableContacts - manager.GetCount()) + " contacts. ");;
+            bool control = true;
 
             while (control)
             {
                 manager.ListData();
-               
-                Console.WriteLine("\n\nSelect one key of list: C.R.U.D - 'Esc' to exit\n");
+
+                Console.WriteLine("\nSelect one key of list: C.R.U.D - 'Q' to Quit");
                 ConsoleKeyInfo key = Console.ReadKey();
 
                 switch (key.Key)
                 {
-                    default:
-                        Console.WriteLine("\nInvalid Console key!");
-                        break;
                     case ConsoleKey.C:
                         manager.Create();
                         break;
                     case ConsoleKey.R:
-                        manager.Read();
+                        manager.Retrieve();
                         break;
                     case ConsoleKey.U:
                         manager.Update();
@@ -54,13 +56,16 @@ namespace View.ConsoleApp
                     case ConsoleKey.D:
                         manager.Delete();
                         break;
-                    case ConsoleKey.Escape:
+                    case ConsoleKey.Q:
                         control = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("\nInvalid Console key!");
                         break;
                 }
             }
             Console.WriteLine("\nClosing program!");
         }
-
     }
 }

@@ -10,107 +10,63 @@ namespace View.ConsoleApp
 {
     public class InsertData
     {
-        BusinessDataValidation dataManipulation;
+        private UserValidator userValidator;
 
         public InsertData()
         {
-            dataManipulation = new BusinessDataValidation();
+            userValidator = new UserValidator();
         }
 
         public int InsertId()
         {
-            string id = null;
-            while (true)
+            while(true)
             {
-                Console.WriteLine("\nInsert the id:");
-                id = Console.ReadLine();
-                if (id?.Length > 0 && int.TryParse(id, out int insertedId))
-                    return insertedId;
+                string id = Console.ReadLine();
+                if (userValidator.IsValidId(id))
+                    return Convert.ToInt32(id);
                 else
-                    Console.WriteLine("\nInvalid id, please insert a integer number, higher than zero.");
+                    Console.WriteLine("\nYou insert an invalid id, please select one number of the list.");
             }
         }
 
         public string InsertName()
-        {
-            string name = null;
+        {            
             while (true)
             {
-                Console.WriteLine("\nInsert the user name:");
-                name = Console.ReadLine();
-                if (name?.Length > 0)
+                Console.WriteLine("\nInsert name:");
+                string name = Console.ReadLine();
+                if (userValidator.IsValidName(name))
                     return name;
-            }
-
-        }
-
-        public string InsertLastName()
-        {
-            string lastName = null;
-            while (true)
-            {
-                Console.WriteLine("\nInsert the user lastname:");
-                lastName = Console.ReadLine();
-                if (lastName?.Length > 0)
-                    return lastName;
+                else
+                    Console.WriteLine("\nYou insert an invalid name.");
             }
         }
-
 
         public int InsertAge()
-        {
-            string ageInserted = null;
+        {            
             while (true)
             {
-                Console.WriteLine("\nInsert the user age:");
-                ageInserted = Console.ReadLine();
-                if (dataManipulation.IsValidAge(ageInserted))
-                    return Convert.ToInt32(ageInserted);
+                Console.WriteLine("\nInsert age:");
+                string age = Console.ReadLine();
+                if (userValidator.IsValidAge(age))
+                    return Convert.ToInt32(age);
                 else
-                    Console.WriteLine("\nInvalid age");
+                    Console.WriteLine("\nYou insert an invalid age.");
             }
-
         }
 
         public string InsertEmail()
-        {
-            string email = null;
+        {            
             while (true)
             {
-                Console.WriteLine("\nInsert the user email:");
-                email = Console.ReadLine();
-                if (dataManipulation.IsValidEmail(email))
+                Console.WriteLine("\nInsert email:");
+                string email = Console.ReadLine();
+                if (userValidator.IsValidEmail(email))
                     return email;
                 else
-                    Console.WriteLine("\nInvalid email");
-
+                    Console.WriteLine("\ncYou insert an invalid email.");
             }
         }
 
-        public long InsertTel()
-        {
-            string tel = null;
-            while (true)
-            {
-                Console.WriteLine("\nInsert the user phone with DDD and DDI (5511912345678):");
-                tel = Console.ReadLine();
-                if (dataManipulation.IsValidTel(tel))
-                    return long.Parse(tel);
-                else
-                    Console.WriteLine("\nInvalid Phone number!");
-            }
-        }
-
-        public string InsertNation()
-        {
-            string nation = null;
-            while (true)
-            {
-                Console.WriteLine("\nInsert the user country:");
-                nation = Console.ReadLine();
-                if (nation?.Length > 0)
-                    return nation;
-            }
-        }
     }
 }

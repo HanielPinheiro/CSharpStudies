@@ -15,7 +15,7 @@ namespace View.WinFormApp
 {
     public partial class VisualFormer : Form
     {
-        private static DataManipulation manipulator = new DataManipulation();
+        private static UserBLL manipulator = new UserBLL();
 
         public VisualFormer()
         {
@@ -74,7 +74,7 @@ namespace View.WinFormApp
 
                     Button btnUpdate = new Button();
                     btnUpdate.Text = "Update Info";
-                    btnUpdate.Click += (sender, EventArgs) => { UpdateData(sender, EventArgs, manipulator.Read(Convert.ToInt32(id))); };
+                    btnUpdate.Click += (sender, EventArgs) => { UpdateData(sender, EventArgs, manipulator.Retrieve(Convert.ToInt32(id))); };
                     btnUpdate.Dock = DockStyle.Top;
                     btnUpdate.TextAlign = ContentAlignment.MiddleCenter;
                     #endregion
@@ -107,7 +107,7 @@ namespace View.WinFormApp
 
         public void ReadData(object sender, EventArgs e, int id)
         {            
-            User targetUser = manipulator.Read(id);
+            User targetUser = manipulator.Retrieve(id);
             Read form = new Read(targetUser);
             form.ShowDialog();
         }

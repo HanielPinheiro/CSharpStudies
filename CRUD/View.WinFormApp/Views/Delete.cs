@@ -13,9 +13,9 @@ namespace View.WinFormApp
 {
     public partial class Delete : Form
     {
-        DataManipulation localDataManipulator;
+        UserBLL localDataManipulator;
         int targetId = 0;
-        public Delete(int id, string email, DataManipulation manipulator)
+        public Delete(int id, string email, UserBLL manipulator)
         {
             InitializeComponent();
             Label_Message.Text = "Do you really want to delete this user: " + id + " - " + email;
@@ -27,8 +27,9 @@ namespace View.WinFormApp
         {
             try
             {
-                if (localDataManipulator.Delete(targetId)) { MessageBox.Show("User delete successfully"); }
-                else { MessageBox.Show("Some problem happening"); }
+                localDataManipulator.Delete(targetId);
+                MessageBox.Show("User delete successfully");
+                //else { MessageBox.Show("Some problem happening"); }
             }
             catch(Exception ex)
             {

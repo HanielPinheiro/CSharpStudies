@@ -16,9 +16,9 @@ namespace View.WinFormApp
     public partial class Update : Form
     {
         User targetUser, cloneUser;
-        DataManipulation localDataManipulator;
+        UserBLL localDataManipulator;
 
-        public Update(User user, DataManipulation manipulator)
+        public Update(User user, UserBLL manipulator)
         {
             InitializeComponent();
             targetUser = user;

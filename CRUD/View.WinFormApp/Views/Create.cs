@@ -15,9 +15,9 @@ namespace View.WinFormApp
 {
     public partial class Create : Form
     {
-        private readonly DataManipulation manipulator;
-        private static BusinessDataValidation businessRule = new BusinessDataValidation();
-        public Create(DataManipulation manipulatorReceived)
+        private readonly UserBLL manipulator;
+        private static UserValidator businessRule = new UserValidator();
+        public Create(UserBLL manipulatorReceived)
         {
             InitializeComponent();
             manipulator = manipulatorReceived;
@@ -33,10 +33,10 @@ namespace View.WinFormApp
                     {
                         if (VerifyEmail())
                         {
-                            if (manipulator.GetCount() < BusinessDataValidation.availableContacts)
+                            if (manipulator.GetCount() < UserValidator.availableContacts)
                             {
                                 User newUser = new User();
-                                newUser.Id = manipulator.ReturnId();
+                                newUser.Id = manipulator.NextId();
                                 newUser.Name = Field_Name.Text;
                                 newUser.LastName = Field_LastName.Text;
                                 newUser.Age = Convert.ToInt32(Field_Age.Text);
@@ -49,7 +49,7 @@ namespace View.WinFormApp
                                 this.Close();
                             }
                             else
-                                MessageBox.Show("Impossible to create a new user, only " + BusinessDataValidation.availableContacts + "are permitted");
+                                MessageBox.Show("Impossible to create a new user, only " + UserValidator.availableContacts + "are permitted");
                         }
                         else
                             MessageBox.Show("Invalid Email");
