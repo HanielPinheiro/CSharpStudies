@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\CRUD",
-    "\\CRUD\\CRUD",
-    "\\CRUD\\DataAccess",
-    "\\CRUD\\DataManager",
-    "\\CRUD\\View.ConsoleApp"
+    ""
   ],
+  "SelectedNode": "\\Project.sln",
   "PreviewInSolutionExplorer": false
 }
