@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Alura",
+    "\\CRUD\\CRUD"
   ],
-  "SelectedNode": "\\Project.sln",
+  "SelectedNode": "\\Alura",
   "PreviewInSolutionExplorer": false
 }
