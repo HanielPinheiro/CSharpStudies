@@ -1,0 +1,8 @@
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe.config
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.pdb
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.AssemblyReference.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.SuggestedBindingRedirects.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.exe
+\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.pdb
