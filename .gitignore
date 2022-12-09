@@ -13,6 +13,7 @@
 *.sln.docstates
 *.vsidx
 *.gitignore
+*.sqlite
 
 # Build results
 [Dd]ebug/
