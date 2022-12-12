@@ -9,14 +9,14 @@ namespace ByteBank.Holder
 {
     public class Client
     {
-        private string name;
-        private string cpf;
-        private string phone;
-        private int id;
-        private static int count = 1;
+        public string name { get; private set; }
+        public string cpf { get; private set; }
+        public string phone { get; private set; }
+        public int id { get; private set; }
+        public static int count { get; private set; } = 0;
 
         public Client(string name, string cpf, string phone)
-        {           
+        {
             try
             {
                 this.id = count;

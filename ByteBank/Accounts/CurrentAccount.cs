@@ -9,19 +9,19 @@ namespace ByteBank
 {
     public class CurrentAccount
     {
-        private int numero_agencia;
-        private string conta;
-        private Client titular;
-        private double saldo;
+        public int agencie_number { get; private set; }
+        public string account { get; private set; }
+        public Client holder { get; private set; }
+        public double payment { get; private set; }
 
         public CurrentAccount(int agencia, string conta, Client titular, double saldo)
         {
             try
             {
-                this.numero_agencia = agencia;
-                this.conta = conta;
-                this.titular = titular;
-                this.saldo = saldo;
+                this.agencie_number = agencia;
+                this.account = conta;
+                this.holder = titular;
+                this.payment = saldo;
             }
             catch (Exception ex)
             {
@@ -31,32 +31,32 @@ namespace ByteBank
 
         public void Deposit(double valor)
         {
-            this.saldo += valor;
+            this.payment += valor;
         }
 
         public void Withdraw(double valor)
         {
-            this.saldo -= valor;
+            this.payment -= valor;
         }
 
         public int SeeAgencie()
         {
-            return this.numero_agencia;
+            return this.agencie_number;
         }
 
         public string SeeAccount()
         {
-            return this.conta;
+            return this.account;
         }
 
         public double SeeBalance()
         {
-            return this.saldo;
+            return this.payment;
         }
 
         public List<string> SeeHolder()
         {
-            return this.titular.ClientData();
+            return this.holder.ClientData();
         }
     }
 }

@@ -6,3 +6,11 @@
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.exe
 \\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.pdb
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.exe.config
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.exe
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.pdb
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.csproj.AssemblyReference.cache
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.csproj.SuggestedBindingRedirects.cache
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.exe
+D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.pdb
