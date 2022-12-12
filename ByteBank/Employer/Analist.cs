@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Employer
 {
-    public class Director:Authenticator
+    internal class Analist : Employers
     {
-        public Director(string cpf, double wage) : base(cpf, wage)
+        public Analist(string cpf, double wage) : base(cpf, wage)
         {
         }
 
         public override double GetBonification()
         {
-            return this.Wage * 0.25;
+            return this.Wage * 0.15;
         }
 
         public override double UpWage()
         {
-            return this.Wage *= 1.05;
+            return this.Wage *= 0.75;
         }
     }
 }

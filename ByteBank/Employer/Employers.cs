@@ -10,13 +10,13 @@ namespace ByteBank.Employer
     public abstract class Employers
     {
         public string Name { get; set; }
-        public string CPF { get; private set; }
-        public double Wage { get; private set; }
+        public string CPF { get; protected set; }
+        public double Wage { get; protected set; }
         public static int totalEmployers = 0;
 
-        public abstract double Bonification();
+        public abstract double GetBonification();
 
-        public abstract double GetWage();
+        public abstract double UpWage();
         public Employers(string cpf, double wage)
         {
             this.CPF = cpf;

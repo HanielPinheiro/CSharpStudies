@@ -47,8 +47,15 @@
   <ItemGroup>
     <Compile Include="Accounts\CurrentAccount.cs" />
     <Compile Include="Control\Controler.cs" />
+    <Compile Include="Employer\Analist.cs" />
+    <Compile Include="Employer\Authenticator.cs" />
     <Compile Include="Employer\Director.cs" />
     <Compile Include="Employer\Employers.cs" />
+    <Compile Include="InternalSystem\IAuthenticable.cs" />
+    <Compile Include="Employer\Manager.cs" />
+    <Compile Include="Employer\Programmer.cs" />
+    <Compile Include="InternalSystem\SystemManager.cs" />
+    <Compile Include="Partner\ComercialPartner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Holder\Client.cs" />

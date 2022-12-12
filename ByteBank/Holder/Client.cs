@@ -13,7 +13,7 @@ namespace ByteBank.Holder
         public string cpf { get; private set; }
         public string phone { get; private set; }
         public int id { get; private set; }
-        public static int count { get; private set; } = 0;
+        public static int count { get; private set; } = 1;
 
         public Client(string name, string cpf, string phone)
         {

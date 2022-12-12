@@ -1,5 +1,7 @@
 ﻿using ByteBank.Employer;
 using ByteBank.Holder;
+using ByteBank.InternalSystem;
+using ByteBank.Partner;
 using ByteBank.View;
 using System;
 using System.Collections.Generic;
@@ -15,19 +17,27 @@ namespace ByteBank.Control
         private ViewConsole consoleApp = new ViewConsole();
         private readonly int controlType = 0;
 
-        public static readonly List<CurrentAccount> accounts = new List<CurrentAccount>();
-        public static readonly List<Client> clients = new List<Client>();
+        private readonly List<CurrentAccount> accounts;
+        private readonly List<Client> clients;
 
-        public static readonly List<Employers> employers = new List<Employers>();
-        public static readonly List<Director> directors = new List<Director>();
+        private readonly List<Employers> employers = new List<Employers>();
+        private readonly List<Director> directors = new List<Director>();
+        private readonly List<ComercialPartner> comercialPartners = new List<ComercialPartner>();
 
-        public Controler(string model)
+        private readonly SystemManager systemManager;
+
+        public Controler()
         {
-            if (model == "Console")
-                controlType = 1;
+            controlType = 1; // console
+            // controlType = 2; // winforms
 
-            if (model == "Form")
-                controlType = 2;
+            accounts = new List<CurrentAccount>();
+            clients = new List<Client>();
+
+            employers = new List<Employers>();
+            directors = new List<Director>();
+            comercialPartners = new List<ComercialPartner>();
+            systemManager  = new SystemManager();
         }
 
         public void StartApplication()
@@ -44,7 +54,8 @@ namespace ByteBank.Control
         public void InitializeData()
         {
             StartClientsAndAccounts();
-            //StartEmployers(5);
+            StartEmployers();
+            StartParners();
         }
 
         public void ActionsFlux()
@@ -64,6 +75,47 @@ namespace ByteBank.Control
             accounts.Add(mariaAccount);
             CurrentAccount andreAccount = new CurrentAccount(12, "0834-X", andre, 1050);
             accounts.Add(andreAccount);
+        }
+
+        public void StartEmployers()
+        {
+            Director joana = new Director("98564231568", 40000);
+            joana.Name = "Joana das Neves";
+            joana.Password = "783";
+            employers.Add(joana);
+
+            Console.WriteLine($"Trying login {nameof(joana)}");
+            systemManager.Login(joana, "825");
+
+            Manager pedro = new Manager("58564231596", 10000);
+            pedro.Name = "Pedro Stark";
+            pedro.Password = "555";
+            employers.Add(pedro);
+
+            Console.WriteLine($"Trying login {nameof(pedro)}");
+            systemManager.Login(pedro, "555");
+
+            Analist jhon = new Analist("03354698677", 10000);
+            jhon.Name = "João das Neves";
+            employers.Add(jhon);
+
+            Programmer lara = new Programmer("77741235162", 10000);
+            lara.Name = "Lara Vel";
+            employers.Add(lara);
+
+            Programmer emir = new Programmer("07842156385", 10000);
+            emir.Name = "Emir Ados";
+            employers.Add(emir);
+        }
+
+        public void StartParners()
+        {
+            ComercialPartner caio = new ComercialPartner();
+            caio.Password = "333";
+            comercialPartners.Add(caio);
+
+            Console.WriteLine($"Trying login {nameof(caio)}");
+            systemManager.Login(caio, "333");
         }
 
     }

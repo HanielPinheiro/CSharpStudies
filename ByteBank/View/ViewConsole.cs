@@ -14,7 +14,7 @@ namespace ByteBank.View
         {
             Console.WriteLine($"Agencie: {account.SeeAgencie()}");
             Console.WriteLine($"Account: {account.SeeAccount()}");
-            Console.WriteLine($"Holder: {account.SeeHolder()[0]}");
+            Console.WriteLine($"Holder: {account.holder.id}");
             Console.WriteLine($"Balance: R$ {String.Format("{0:0.00}", account.SeeBalance())}");
             Console.WriteLine();
         }

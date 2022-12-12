@@ -25,7 +25,7 @@ namespace ByteBank
             }
             catch (Exception ex)
             {
-                throw new Exception("Invalid client!");
+                throw new Exception("Invalid client! Error: " + ex.Message);
             }
         }
 

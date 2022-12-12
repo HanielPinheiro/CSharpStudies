@@ -13,7 +13,7 @@ namespace ByteBank
     {        
         static void Main(string[] args)
         {
-            Controler appControl = new Controler("Console");
+            Controler appControl = new Controler();
             try
             {
                 appControl.StartApplication();
