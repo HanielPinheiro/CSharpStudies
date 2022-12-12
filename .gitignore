@@ -227,3 +227,10 @@ AppPackages/
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
+/.vs/CSharpStudies/v17/.wsuo
+/.vs/CSharpStudies/v17/.wsuo
+/ByteBank/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Alura/.vs/AluraCourse/FileContentIndex/d0302aff-95ec-4f64-8b2a-beaa77a705f4.vsidx
+/Alura/.vs/AluraCourse/FileContentIndex/ce42b623-fab1-4b9b-bd5f-1c3b06635017.vsidx
+/Alura/.vs/AluraCourse/FileContentIndex/7fd4b6c9-69b9-4985-91e1-c0a4481b242f.vsidx
+/Alura/.vs/AluraCourse/FileContentIndex/673255f1-381d-42bf-ad64-338da1e9f6e3.vsidx
