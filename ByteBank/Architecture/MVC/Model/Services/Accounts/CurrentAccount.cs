@@ -12,31 +12,33 @@ namespace ByteBank
         public int agencie_number { get; private set; }
         public string account { get; private set; }
         public Client holder { get; private set; }
-        public double payment { get; private set; }
+        public double wage { get; private set; }
+        public int Agencie { get; }
 
-        public CurrentAccount(int agencia, string conta, Client titular, double saldo)
+        public CurrentAccount(int agencie, string account, Client holder, double balance)
         {
             try
             {
-                this.agencie_number = agencia;
-                this.account = conta;
-                this.holder = titular;
-                this.payment = saldo;
+                this.agencie_number = agencie;
+                this.account = account;
+                this.holder = holder;
+                this.wage = balance;
             }
             catch (Exception ex)
             {
                 throw new Exception("Invalid client! Error: " + ex.Message);
             }
+            Agencie = agencie;
         }
 
         public void Deposit(double valor)
         {
-            this.payment += valor;
+            this.wage += valor;
         }
 
         public void Withdraw(double valor)
         {
-            this.payment -= valor;
+            this.wage -= valor;
         }
 
         public int SeeAgencie()
@@ -51,7 +53,7 @@ namespace ByteBank
 
         public double SeeBalance()
         {
-            return this.payment;
+            return this.wage;
         }
 
         public List<string> SeeHolder()

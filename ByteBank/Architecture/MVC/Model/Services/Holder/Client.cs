@@ -9,21 +9,21 @@ namespace ByteBank.Holder
 {
     public class Client
     {
-        public string name { get; private set; }
-        public string cpf { get; private set; }
-        public string phone { get; private set; }
-        public int id { get; private set; }
-        public static int count { get; private set; } = 1;
+        public string Name { get; private set; }
+        public string Cpf { get; private set; }
+        public string Phone { get; private set; }
+        public int Id { get; private set; }
+        public static int Count { get; private set; } = 1;
 
         public Client(string name, string cpf, string phone)
         {
             try
             {
-                this.id = count;
-                this.name = name;
-                this.cpf = FormatCPF(cpf);
-                this.phone = Convert.ToUInt64(phone.Trim()).ToString(@"00\ 0\ 0000\-0000");
-                count++;
+                this.Id = Count;
+                this.Name = name;
+                this.Cpf = FormatCPF(cpf);
+                this.Phone = Convert.ToUInt64(phone.Trim()).ToString(@"00\ 0\ 0000\-0000");
+                Count++;
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace ByteBank.Holder
                 response = response.Insert(3, ".");
             }
             else
-                throw new Exception("Deu ruim ao criar " + this.name + ". Invalid Cpf: " + cpfToBeFormated);
+                throw new Exception("Deu ruim ao criar " + this.Name + ". Invalid Cpf: " + cpfToBeFormated);
 
 
             return response;
@@ -56,10 +56,10 @@ namespace ByteBank.Holder
         public List<string> ClientData()
         {
             List<string> data = new List<string>();
-            data.Add(this.id.ToString());
-            data.Add(this.name);
-            data.Add(this.cpf);
-            data.Add(this.phone);
+            data.Add(this.Id.ToString());
+            data.Add(this.Name);
+            data.Add(this.Cpf);
+            data.Add(this.Phone);
 
             return data;
         }

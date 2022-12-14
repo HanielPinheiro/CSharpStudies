@@ -1,11 +1,3 @@
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe.config
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.pdb
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.AssemblyReference.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.SuggestedBindingRedirects.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.exe
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.pdb
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.exe.config
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.exe
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\bin\Debug\ByteBank.pdb
@@ -14,3 +6,11 @@ D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debu
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.exe
 D:\D_Arquivos\MeusProjetos\EstudosProgramacao\C#\CSharpStudies\ByteBank\obj\Debug\ByteBank.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe.config
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.exe
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\bin\Debug\ByteBank.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.AssemblyReference.cache
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.SuggestedBindingRedirects.cache
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.csproj.CoreCompileInputs.cache
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.exe
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\ByteBank\obj\Debug\ByteBank.pdb

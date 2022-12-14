@@ -25,11 +25,7 @@ namespace ByteBank
             }
 
             Console.ReadKey();
-        }
-
-       
-
-        
+        }  
     }
 }
 
