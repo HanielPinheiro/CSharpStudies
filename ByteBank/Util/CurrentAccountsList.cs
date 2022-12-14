@@ -105,6 +105,17 @@ namespace ByteBank.Util
 
         }
 
+        public bool Remove(string accountNumber)
+        {
+            if (accounts.Any(p => p.account == accountNumber))
+            {
+                Remove(accounts.FirstOrDefault(p => p.account == accountNumber));
+                return true;
+            }
+            return false;
+        }
+
+
         public CurrentAccount HigherBalance()
         {
             CurrentAccount higherBalanceAccount = accounts[0];
@@ -121,7 +132,13 @@ namespace ByteBank.Util
 
             return higherBalanceAccount;
         }
+        public CurrentAccount GetAccountByIndex(int index)
+        {
+            if (index < 0 || index > ListSize)
+                throw new Exception("Index out of range");
 
+            return accounts[index];
+        }
         public override string ToString()
         {
             string superString = "";
@@ -132,19 +149,14 @@ namespace ByteBank.Util
             return superString;
         }
 
-        public CurrentAccount GetAccountByIndex(int index)
-        {
-            if (index < 0 || index > ListSize)
-                throw new Exception("Index out of range");
-
-            return accounts[index];
-        }
-
         public int Count()
         {
             return accounts.Length;
         }
 
-        
+        public void Sort()
+        {
+            Array.Sort(accounts);
+        }
     }
 }

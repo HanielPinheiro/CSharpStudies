@@ -1,4 +1,5 @@
 ﻿using ByteBank.Employer;
+using ByteBank.Exceptions;
 using ByteBank.Holder;
 using ByteBank.InternalSystem;
 using ByteBank.Partner;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ByteBank.Control
@@ -44,6 +46,8 @@ namespace ByteBank.Control
         public void StartApplication()
         {
             InitializeData();
+            ViewConsole view = new ViewConsole();
+            view.Menu();
         }
 
         public void InitializeData()
@@ -131,6 +135,7 @@ namespace ByteBank.Control
             systemManager.Login(caio, "333");
         }
 
+        #region ConsoleApp MenuControl
 
         public void SignIn()
         {
@@ -195,16 +200,101 @@ namespace ByteBank.Control
 
         public void RemoveAccount()
         {
+            Console.Clear();
+            Console.WriteLine("===============================");
+            Console.WriteLine("===     REMOVE  ACCOUNTS    ===");
+            Console.WriteLine("===============================");
+            Console.WriteLine("\n");
+            Console.Write("Insert the account number: ");
 
+            string accountNumber = Console.ReadLine();
+
+            try
+            {
+                if (accountsList.Remove(accountNumber))
+                {
+                    Console.WriteLine("Removed succesfully");
+                    OrderAccounts();
+                }
+                else
+                {
+                    throw new ByteBankException("Fail when try to remove this account");
+                }
+            }
+            catch(ByteBankException ex)
+            {
+                throw new ByteBankException("Error: "+ex.Message);
+            }
+            
         }
 
         public void OrderAccounts()
         {
-
+            accountsList.Sort();
+            Console.WriteLine("... Count list ordered ...");
+            Console.ReadKey();
         }
         public void SearchAccount()
         {
-
+            Console.Clear();
+            Console.WriteLine("===============================");
+            Console.WriteLine("===    SEARCH  ACCOUNTS     ===");
+            Console.WriteLine("===============================");
+            Console.WriteLine("\n");
+            Console.Write("Do you want to search by the (1) ACCOUNT NUMBER or (2) HOLDER CPF ? ");
+            switch (int.Parse(Console.ReadLine()))
+            {
+                case 1:
+                    {
+                        Console.Write("Insert the account number: ");
+                        string accountNumber = Console.ReadLine();
+                        CurrentAccount accountConsulted = SearchByAccountNumber(accountNumber);
+                        Console.WriteLine(accountConsulted.ToString());
+                        Console.ReadKey();
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.Write("Informe o CPF do Titular: ");
+                        string cpf = Console.ReadLine();
+                        CurrentAccount consultaCpf = SearchByHolderCPF(cpf);
+                        Console.WriteLine(consultaCpf.ToString());
+                        Console.ReadKey();
+                        break;
+                    }
+                default:
+                    Console.WriteLine("Invalid option!");
+                    break;
+            }
         }
+
+        CurrentAccount SearchByHolderCPF(string cpf)
+        {
+            CurrentAccount conta = null;
+            for (int i = 0; i < accountsList.Count(); i++)
+            {
+                if (accountsList[i].holder.Cpf.Equals(cpf))
+                {
+                    conta = accountsList[i];
+                }
+            }
+            return conta;
+        }
+
+        CurrentAccount SearchByAccountNumber(string numeroConta)
+        {
+            CurrentAccount conta = null;
+            for (int i = 0; i < accountsList.Count(); i++)
+            {
+                if (accountsList[i].account.Equals(numeroConta))
+                {
+                    conta = accountsList[i];
+                }
+            }
+
+            return conta;
+        }
+
+        #endregion
     }
 }
