@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Util
 {
-    public class CurrentAccountsList : IEnumerable
+    public class CurrentAccountsArray : IEnumerable
     {
         private CurrentAccount[] accounts = null;
         public int ListSize { get; private set; }
@@ -24,7 +24,7 @@ namespace ByteBank.Util
             }
         }
 
-        public CurrentAccountsList(int size = 5)
+        public CurrentAccountsArray(int size = 5)
         {
             accounts = new CurrentAccount[size];
             ListSize = 0;
@@ -144,7 +144,8 @@ namespace ByteBank.Util
             string superString = "";
 
             for (int i = 0; i < ListSize; i++)
-                superString += $"Id: {i}\tHolder: {accounts[i].holder.Name}\tAccount: {accounts[i].account}\tAgencie: {accounts[i].agencie_number}\tBalance: {accounts[i].SeeBalance()} \n";
+                superString += $"Id: {i}\tHolder: {accounts[i].holder.Name}\tHolder CPF: {accounts[i].holder.Cpf}" +
+                    $"\tAccount: {accounts[i].account}\tAgencie: {accounts[i].agencie_number}\tBalance: {accounts[i].SeeBalance()} \n";
 
             return superString;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Util
 {
-    public class GenericList<T>
+    public class CurrentAccountList<T>
     {
         public T GenericPropertie { get; set; }
 

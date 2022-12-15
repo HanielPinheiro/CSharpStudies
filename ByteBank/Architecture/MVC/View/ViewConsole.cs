@@ -35,7 +35,7 @@ namespace ByteBank.View
         }
 
 
-        public void ShowAccounts(CurrentAccountsList accountsList)
+        public void ShowAccounts(CurrentAccountsArray accountsList)
         {
             Console.WriteLine("Accounts registereds:");
             for (int i = 0; i < accountsList.ListSize; i++)

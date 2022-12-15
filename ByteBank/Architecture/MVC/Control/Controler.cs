@@ -20,7 +20,7 @@ namespace ByteBank.Control
     {
         private readonly int controlType = 0;
 
-        private readonly CurrentAccountsList accountsList;
+        private readonly CurrentAccountsArray accountsList;
         private readonly List<Client> clients;
 
         private readonly List<Employers> employers = new List<Employers>();
@@ -34,7 +34,7 @@ namespace ByteBank.Control
             controlType = 1; // console
             // controlType = 2; // winforms
 
-            accountsList = new CurrentAccountsList();
+            accountsList = new CurrentAccountsArray();
             clients = new List<Client>();
 
             employers = new List<Employers>();
@@ -188,11 +188,12 @@ namespace ByteBank.Control
             foreach (CurrentAccount item in accountsList)
             {
                 Console.WriteLine("===     Account data    ===");
-                Console.WriteLine("Number : " + item.account);
-                Console.WriteLine("Balance: " + item.SeeBalance());
-                Console.WriteLine("Holder: " + item.holder.Name);
-                Console.WriteLine("Holder CPF: " + item.holder.Cpf);
-                Console.WriteLine("Profissão do Titular: " + item.holder.Phone);
+                //Console.WriteLine("Number : " + item.account);
+                //Console.WriteLine("Balance: " + item.SeeBalance());
+                //Console.WriteLine("Holder: " + item.holder.Name);
+                //Console.WriteLine("Holder CPF: " + item.holder.Cpf);
+                //Console.WriteLine("Profissão do Titular: " + item.holder.Phone);
+                accountsList.ToString();
                 Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 Console.ReadKey();
             }
@@ -296,5 +297,14 @@ namespace ByteBank.Control
         }
 
         #endregion
+
+        //private List<CurrentAccount> ConsultaPorAgencia(int numeroAgencia)
+        //{
+        //    var consulta = (
+        //                         from conta in accountsList
+        //                         where conta.Numero_agencia == numeroAgencia
+        //                         select conta).ToList();
+        //    return consulta;
+        //}
     }
 }
