@@ -188,11 +188,11 @@ namespace ByteBank.Control
             foreach (CurrentAccount item in accountsList)
             {
                 Console.WriteLine("===     Account data    ===");
-                //Console.WriteLine("Number : " + item.account);
-                //Console.WriteLine("Balance: " + item.SeeBalance());
-                //Console.WriteLine("Holder: " + item.holder.Name);
-                //Console.WriteLine("Holder CPF: " + item.holder.Cpf);
-                //Console.WriteLine("Profissão do Titular: " + item.holder.Phone);
+                Console.WriteLine("Number : " + item.account);
+                Console.WriteLine("Balance: " + item.SeeBalance());
+                Console.WriteLine("Holder: " + item.holder.Name);
+                Console.WriteLine("Holder CPF: " + item.holder.Cpf);
+                Console.WriteLine("Profissão do Titular: " + item.holder.Phone);
                 accountsList.ToString();
                 Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 Console.ReadKey();
@@ -235,6 +235,7 @@ namespace ByteBank.Control
             Console.WriteLine("... Count list ordered ...");
             Console.ReadKey();
         }
+
         public void SearchAccount()
         {
             Console.Clear();

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ByteBank.Util
+namespace ByteBank.Architecture.MVC.Model.Services.Accounts
 {
-    public class CurrentAccountStack
-    {
+    internal class PixKeyGenerator<T>
+    {                
     }
 }
