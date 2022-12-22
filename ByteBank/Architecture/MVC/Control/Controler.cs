@@ -20,7 +20,7 @@ namespace ByteBank.Control
     {
         private readonly int controlType = 0;
 
-        private readonly CurrentAccountsArray accountsList;
+        private readonly List<CurrentAccount> accountsList = new List<CurrentAccount>();
         private readonly List<Client> clients;
 
         private readonly List<Employers> employers = new List<Employers>();
@@ -34,7 +34,6 @@ namespace ByteBank.Control
             controlType = 1; // console
             // controlType = 2; // winforms
 
-            accountsList = new CurrentAccountsArray();
             clients = new List<Client>();
 
             employers = new List<Employers>();
@@ -212,7 +211,7 @@ namespace ByteBank.Control
 
             try
             {
-                if (accountsList.Remove(accountNumber))
+                if (accountsList.Remove(accountsList.FirstOrDefault(p => p.account == accountNumber)))
                 {
                     Console.WriteLine("Removed succesfully");
                     OrderAccounts();

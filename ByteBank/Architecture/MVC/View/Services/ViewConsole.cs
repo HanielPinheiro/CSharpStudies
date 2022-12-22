@@ -35,10 +35,10 @@ namespace ByteBank.View
         }
 
 
-        public void ShowAccounts(CurrentAccountsArray accountsList)
+        public void ShowAccounts(List<CurrentAccount> accountsList)
         {
             Console.WriteLine("Accounts registereds:");
-            for (int i = 0; i < accountsList.ListSize; i++)
+            for (int i = 0; i < accountsList.Count; i++)
             {
                 CurrentAccount account = accountsList[i];
                 Console.WriteLine($"{i} - {account.account} / {account.agencie_number}");
