@@ -50,7 +50,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(361, 196);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(385, 127);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -61,21 +61,21 @@
             this.tableLayoutPanel2.Controls.Add(this.Button_No, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.Button_Yes, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 101);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 66);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(355, 92);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(379, 58);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // Button_No
             // 
             this.Button_No.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Button_No.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.Button_No.Location = new System.Drawing.Point(180, 3);
+            this.Button_No.Location = new System.Drawing.Point(192, 3);
             this.Button_No.Name = "Button_No";
-            this.Button_No.Size = new System.Drawing.Size(172, 86);
+            this.Button_No.Size = new System.Drawing.Size(184, 52);
             this.Button_No.TabIndex = 0;
             this.Button_No.Text = "No";
             this.Button_No.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             this.Button_Yes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.Button_Yes.Location = new System.Drawing.Point(3, 3);
             this.Button_Yes.Name = "Button_Yes";
-            this.Button_Yes.Size = new System.Drawing.Size(171, 86);
+            this.Button_Yes.Size = new System.Drawing.Size(183, 52);
             this.Button_Yes.TabIndex = 1;
             this.Button_Yes.Text = "Yes";
             this.Button_Yes.UseVisualStyleBackColor = true;
@@ -99,7 +99,7 @@
             this.Label_Message.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Label_Message.Location = new System.Drawing.Point(3, 0);
             this.Label_Message.Name = "Label_Message";
-            this.Label_Message.Size = new System.Drawing.Size(355, 98);
+            this.Label_Message.Size = new System.Drawing.Size(379, 63);
             this.Label_Message.TabIndex = 1;
             this.Label_Message.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 196);
+            this.ClientSize = new System.Drawing.Size(385, 127);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Delete";
             this.Text = "Delete";

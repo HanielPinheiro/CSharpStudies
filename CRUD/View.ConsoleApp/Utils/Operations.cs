@@ -1,20 +1,17 @@
 ﻿using Model;
 using Business;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 
 namespace View.ConsoleApp
 {
-    internal class Manager
+    internal class Operations
     {
-        private InsertData insert = new InsertData();
+        private ManipulateData insert = new ManipulateData();
         private static UserBLL userBLL = new UserBLL();
+
         public void Create()
         {
             User newUser = new User();
@@ -65,16 +62,12 @@ namespace View.ConsoleApp
                         break;
                     else
                         choosedOperation = controlKeyInfo.Key + Console.ReadLine();
-
-                    string propertyName = null, propertyValue = null;
-
                     try
                     {
                         string[] splitedValues = choosedOperation.Split(new char[] { ':' }, StringSplitOptions.RemoveEmptyEntries);
 
-                        propertyName = userBLL.ReturnPropertieName(splitedValues[0]);
-                        propertyValue = splitedValues[1];
-
+                        string propertyName = userBLL.ReturnPropertieName(splitedValues[0]);
+                        string propertyValue = splitedValues[1];
                         switch (propertyName)
                         {
                             case nameof(User.Name):

@@ -16,19 +16,30 @@ namespace View.WinFormApp
     {
         public Read(User user)
         {
-            InitializeComponent();
-            ShowData(user);
+            try
+            {
+                InitializeComponent();
+                ShowData(user);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public void ShowData(User user)
+        private void ShowData(User user)
         {
-            Label_Id.Text = Convert.ToString(user.Id);
-            Label_Name.Text = user.Name;
-            Label_LastName.Text = user.LastName;
-            Label_Age.Text = Convert.ToString(user.Age);
-            Label_Phone.Text = Convert.ToString(user.Tel);
-            Label_Email.Text = user.Email;
-            Label_Country.Text = user.Country;
+            try
+            {
+                Label_Id.Text = Convert.ToString(user.Id);
+                Label_Name.Text = user.Name;
+                Label_Email.Text = user.Age.ToString();
+                Label_Email.Text = user.Email;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

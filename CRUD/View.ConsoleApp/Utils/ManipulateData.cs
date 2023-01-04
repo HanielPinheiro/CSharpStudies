@@ -1,18 +1,13 @@
 ﻿using Business;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace View.ConsoleApp
 {
-    public class InsertData
+    internal class ManipulateData
     {
-        private UserValidator userValidator;
+        private readonly UserValidator userValidator;
 
-        public InsertData()
+        public ManipulateData()
         {
             userValidator = new UserValidator();
         }

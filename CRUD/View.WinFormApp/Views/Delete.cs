@@ -13,14 +13,27 @@ namespace View.WinFormApp
 {
     public partial class Delete : Form
     {
-        UserBLL localDataManipulator;
+        private readonly UserBLL localDataManipulator;
+        public Delete()
+        {
+            localDataManipulator = new UserBLL();
+        }
+
         int targetId = 0;
+
         public Delete(int id, string email, UserBLL manipulator)
         {
-            InitializeComponent();
-            Label_Message.Text = "Do you really want to delete this user: " + id + " - " + email;
-            localDataManipulator = manipulator;
-            targetId = id;
+            try
+            {
+                InitializeComponent();
+                Label_Message.Text = "Do you really want to delete this user: " + id + " - " + email;
+                localDataManipulator = manipulator;
+                targetId = id;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Button_Yes_Click(object sender, EventArgs e)
@@ -29,7 +42,6 @@ namespace View.WinFormApp
             {
                 localDataManipulator.Delete(targetId);
                 MessageBox.Show("User delete successfully");
-                //else { MessageBox.Show("Some problem happening"); }
             }
             catch(Exception ex)
             {

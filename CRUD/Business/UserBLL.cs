@@ -20,6 +20,8 @@ namespace Business
         {
             return UserDAO.CountUsers();
         }
+
+        #region Operations
         public void Create(User user)
         {
             try
@@ -72,6 +74,9 @@ namespace Business
             else
                 return false;
         }
+        #endregion
+
+        #region Utils
         public List<int> GetIds()
         {
             return UserDAO.GetRegisteredIds();
@@ -89,10 +94,12 @@ namespace Business
         {
             return UserDAO.FindUserById(id);
         }
+        #endregion
 
+        #region Properties and Types
         public string TypeName(string info)
         {
-            if(userValidator.TypeName(info) != null)
+            if (userValidator.TypeName(info) != null)
                 return userValidator.TypeName(info);
             else
                 throw new Exception($"Error when try to {nameof(TypeName)}");
@@ -100,22 +107,22 @@ namespace Business
         public int TypeAge(string info)
         {
 
-            if(userValidator.TypeAge(info) > 0)
+            if (userValidator.TypeAge(info) > 0)
                 return userValidator.TypeAge(info);
-            else            
-                throw new Exception($"Error when try to {nameof(TypeAge)}");            
+            else
+                throw new Exception($"Error when try to {nameof(TypeAge)}");
         }
         public string TypeEmail(string info)
         {
             if (userValidator.TypeEmail(info) != null)
                 return userValidator.TypeEmail(info);
             else
-                throw new Exception($"Error when try to {nameof(TypeEmail)}");            
+                throw new Exception($"Error when try to {nameof(TypeEmail)}");
         }
-       
+
         public List<PropertyInfo> GetPropertyInfos()
         {
-            return typeof(User).GetProperties().ToList();             
+            return typeof(User).GetProperties().ToList();
         }
 
         public string ReturnPropertieName(string propertyName)
@@ -126,6 +133,7 @@ namespace Business
                     return property.Name;
             return null;
         }
+        #endregion
     }
 }
 

@@ -14,55 +14,6 @@ namespace Business
     {
         public static int availableContacts = 10;
 
-        public bool IsValidId(string id)
-        {
-           if (id?.Length > 0 && int.TryParse(id, out int insertedId))
-                return true;
-           return false;
-        }
-
-        public bool IsValidName(string name)
-        {
-            if(name?.Length >= 3)
-                return true;
-            return false;
-        }
-
-        public bool IsValidAge(string age)
-        {
-            if (int.TryParse(age, out int result) && result > 17 && result < 100)
-                return true;
-            return false;
-        }
-
-        public bool IsValidEmail(string email)
-        {
-            if (email?.Length > 0 && email.Contains("@"))
-                return true;
-            return false;
-        }
-
-        public string TypeName(string name)
-        {
-            if (IsValidName(name))
-                return name;
-            return null;
-        }
-
-        public int TypeAge(string age)
-        {
-            if (IsValidAge(age))
-                return Convert.ToInt32(age);
-            return -1;
-        }
-
-        public string TypeEmail(string email)
-        {
-            if (IsValidEmail(email))
-                return email;
-            return null;
-        }
-
         public void Validate(User user)
         {
             if (UserDAO.CountUsers() < availableContacts)
@@ -83,6 +34,59 @@ namespace Business
                 throw new Exception($"You can't assing more users, {availableContacts} users registered.");
             }
         }
+
+        #region IsValid
+        public bool IsValidId(string id)
+        {
+            if (id?.Length > 0 && int.TryParse(id, out int insertedId))
+                return true;
+            return false;
+        }
+
+        public bool IsValidName(string name)
+        {
+            if (name?.Length >= 3)
+                return true;
+            return false;
+        }
+
+        public bool IsValidAge(string age)
+        {
+            if (int.TryParse(age, out int result) && result > 17 && result < 100)
+                return true;
+            return false;
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            if (email?.Length > 0 && email.Contains("@"))
+                return true;
+            return false;
+        }
+        #endregion
+
+        #region Type
+        public string TypeName(string name)
+        {
+            if (IsValidName(name))
+                return name;
+            return null;
+        }
+
+        public int TypeAge(string age)
+        {
+            if (IsValidAge(age))
+                return Convert.ToInt32(age);
+            return -1;
+        }
+
+        public string TypeEmail(string email)
+        {
+            if (IsValidEmail(email))
+                return email;
+            return null;
+        }
+        #endregion
 
     }
 }

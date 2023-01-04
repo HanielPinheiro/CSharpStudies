@@ -39,6 +39,7 @@ namespace DataAccess
             Create(user3);
         }
 
+        #region Utils
         public static int CountUsers()
         {
             return users.Count;
@@ -63,6 +64,9 @@ namespace DataAccess
         {
             return users.Any(p => string.Equals(p.Email, email, StringComparison.InvariantCultureIgnoreCase));
         }
+        #endregion
+
+        #region Operations
         public static void Create(User newUser)
         {   
             try
@@ -79,10 +83,6 @@ namespace DataAccess
             try
             {
                 User user = users.Find(p => p.Id == id);
-                //User user1 = users.First(p => p.Id == id);  nao retorna null
-                //User user2 = users.FirstOrDefault(p => p.Id == id);  retorna null
-                //User user3 = users.Where(p => p.Id == id).First();  nao retorna null
-                //User user4 = users.Where(p => p.Id == id).ToList()[0]; retorna null
 
                 return user;
             }
@@ -95,9 +95,6 @@ namespace DataAccess
         {
             try
             {
-                //Delete(newUser.Id);
-                //users.Add(newUser);
-
                 User user = users.Find(p => p.Id == newUser.Id);
                 user.Name = newUser.Name;
                 user.Email = newUser.Email;
@@ -119,5 +116,7 @@ namespace DataAccess
                 throw new Exception($"Error when try to {nameof(Delete)} user {id}");
             }
         }
+        #endregion
+
     }
 }

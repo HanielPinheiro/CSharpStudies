@@ -1,59 +1,74 @@
 ﻿using Business;
 using Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace View.WinFormApp
 {
     public partial class Update : Form
     {
-        User targetUser, cloneUser;
-        UserBLL localDataManipulator;
+        private User targetUser, cloneUser;
+        private readonly UserBLL localDataManipulator;
 
         public Update(User user, UserBLL manipulator)
         {
-            InitializeComponent();
-            targetUser = user;
-            cloneUser = user;
-            localDataManipulator = manipulator;
-            SetFields();
+            try
+            {
+                InitializeComponent();
+                targetUser = user;
+                cloneUser = user;
+                localDataManipulator = manipulator;
+                SetFields();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        public void SetFields()
+        private void SetFields()
         {
-            Field_Name.Text = cloneUser.Name;
-            Field_LastName.Text = cloneUser.LastName;
-            Field_Age.Text = cloneUser.Age.ToString();
-            Field_Email.Text = cloneUser.Email;
-            Field_Phone.Text = cloneUser.Tel.ToString();
-            Field_Country.Text = cloneUser.Country;
-            localDataManipulator.Update(cloneUser, cloneUser.Id);
+            try
+            {
+                Field_Name.Text = cloneUser.Name;
+                Field_Age.Text = cloneUser.Age.ToString();
+                Field_Email.Text = cloneUser.Email;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
         {
-            SetFields();
-            this.Close();
+            try
+            {
+                SetFields();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void Button_Update_Click(object sender, EventArgs e)
         {
-            targetUser.Name = Field_Name.Text;
-            targetUser.LastName = Field_LastName.Text;
-            targetUser.Age = Convert.ToInt32(Field_Age.Text);
-            targetUser.Email = Field_Email.Text;
-            targetUser.Tel = long.Parse(Field_Phone.Text);
-            targetUser.Country = Field_Country.Text;
-            localDataManipulator.Update(targetUser, cloneUser.Id);
-            this.Close();
+            try
+            {
+                targetUser.Id = cloneUser.Id;
+                targetUser.Name = Field_Name.Text;
+                targetUser.Age = Convert.ToInt32(Field_Age.Text);
+                targetUser.Email = Field_Email.Text;
+                localDataManipulator.Update(targetUser);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

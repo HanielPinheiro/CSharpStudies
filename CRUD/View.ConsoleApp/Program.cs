@@ -1,21 +1,12 @@
-﻿using Microsoft.Win32;
-using Business;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
-using System.Collections;
-using Model;
+﻿using System;
 
 namespace View.ConsoleApp
 {
     internal static class Program
     {
-        private static Manager manager = new Manager();
-
+        private static Operations operationManager = new Operations();
+        
+        
         [STAThread]
         static void Main(string[] args)
         {
@@ -37,7 +28,7 @@ namespace View.ConsoleApp
 
             while (control)
             {
-                manager.ListData();
+                operationManager.ListData();
 
                 Console.WriteLine("\nSelect one key of list: C.R.U.D - 'Q' to Quit");
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -45,16 +36,16 @@ namespace View.ConsoleApp
                 switch (key.Key)
                 {
                     case ConsoleKey.C:
-                        manager.Create();
+                        operationManager.Create();
                         break;
                     case ConsoleKey.R:
-                        manager.Retrieve();
+                        operationManager.Retrieve();
                         break;
                     case ConsoleKey.U:
-                        manager.Update();
+                        operationManager.Update();
                         break;
                     case ConsoleKey.D:
-                        manager.Delete();
+                        operationManager.Delete();
                         break;
                     case ConsoleKey.Q:
                         control = false;
@@ -65,6 +56,7 @@ namespace View.ConsoleApp
                         break;
                 }
             }
+
             Console.WriteLine("\nClosing program!");
         }
     }
