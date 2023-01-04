@@ -18,12 +18,13 @@ namespace View.WinFormApp
         private readonly UserBLL localDataManipulator;
         private readonly UserValidator localValidator;
 
-        public Create(UserBLL manipulatorReceived)
+        public Create(UserBLL manipulatorReceived, UserValidator validatorReceived)
         {
             try
             {
                 InitializeComponent();
                 localDataManipulator = manipulatorReceived;
+                localValidator = validatorReceived;
             }
             catch (Exception ex)
             {

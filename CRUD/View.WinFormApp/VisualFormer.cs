@@ -245,7 +245,7 @@ namespace View.WinFormApp
         {
             try
             {
-                Create form = new Create(businessRules);
+                Create form = new Create(businessRules, validator);
                 form.ShowDialog();
                 ListData();
             }

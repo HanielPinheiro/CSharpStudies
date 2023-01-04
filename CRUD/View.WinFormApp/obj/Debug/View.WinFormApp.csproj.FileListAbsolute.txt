@@ -8,3 +8,15 @@
 \\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.VisualFormer.resources
 \\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.GenerateResource.cache
 \\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.CoreCompileInputs.cache
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.exe.config
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.exe
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\View.WinFormApp.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\Business.dll
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataManager.dll
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataAccess.dll
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\Business.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataManager.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\bin\Debug\DataAccess.pdb
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.csproj.CopyComplete
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.exe
+\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\View.WinFormApp\obj\Debug\View.WinFormApp.pdb
