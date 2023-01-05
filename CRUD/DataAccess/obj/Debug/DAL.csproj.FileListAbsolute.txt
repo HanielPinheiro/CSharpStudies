@@ -1,9 +1,0 @@
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\bin\Debug\DataAccess.dll
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\bin\Debug\DataAccess.pdb
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\bin\Debug\DataManager.dll
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\bin\Debug\DataManager.pdb
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\obj\Debug\DAL.csproj.AssemblyReference.cache
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\obj\Debug\DAL.csproj.CoreCompileInputs.cache
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\obj\Debug\DAL.csproj.CopyComplete
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\obj\Debug\DataAccess.dll
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataAccess\obj\Debug\DataAccess.pdb

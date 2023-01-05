@@ -1,3 +1,0 @@
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\CRUD\obj\Debug\Project.csproj.AssemblyReference.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\CRUD\obj\Debug\Project.csproj.SuggestedBindingRedirects.cache
-\\fderivssv10\Folder Redirection$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\CRUD\obj\Debug\Project.csproj.CoreCompileInputs.cache

@@ -1,6 +1,0 @@
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataManager.dll
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\bin\Debug\DataManager.pdb
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\Model.csproj.AssemblyReference.cache
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\Model.csproj.CoreCompileInputs.cache
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.dll
-\\FDERIVSSV10\FOLDER REDIRECTION$\haniel.pereira\Desktop\TramposHaniel\CursoUdemy\Git\CRUD\DataManager\obj\Debug\DataManager.pdb
