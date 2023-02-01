@@ -32,6 +32,8 @@ x64/
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/packages/repositories.config
+# The vs folder can be ignored
+**/vs/*
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
