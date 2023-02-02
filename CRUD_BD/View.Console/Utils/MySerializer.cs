@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+///Exemplo de serializacao de JSON
+
 namespace View.Console.Utils
 {
     public class MySerializer
