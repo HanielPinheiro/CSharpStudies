@@ -34,30 +34,40 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Descontos\CalculadorDescontos.cs" />
     <Compile Include="Descontos\Compra.cs" />
     <Compile Include="Descontos\DescontoVendaCasada.cs" />
+    <Compile Include="Requisicao\CSV.cs" />
+    <Compile Include="Requisicao\PORCENTO.cs" />
+    <Compile Include="Requisicao\XML.cs" />
     <Compile Include="Interfaces\IDesconto.cs" />
     <Compile Include="Descontos\DescontoCincoItens.cs" />
     <Compile Include="Descontos\DescontoQuinhentosReais.cs" />
     <Compile Include="Descontos\SemDesconto.cs" />
-    <Compile Include="Impostos\CalculadorDeImpostos.cs" />
-    <Compile Include="Impostos\ICCC.cs" />
-    <Compile Include="Impostos\ICMS.cs" />
+    <Compile Include="Strategy\Impostos\CalculadorDeImpostos.cs" />
+    <Compile Include="Strategy\Impostos\ICCC.cs" />
+    <Compile Include="Strategy\Impostos\ICMS.cs" />
     <Compile Include="Interfaces\IImposto.cs" />
-    <Compile Include="Impostos\ISS.cs" />
+    <Compile Include="Strategy\Impostos\ISS.cs" />
     <Compile Include="Descontos\Item.cs" />
-    <Compile Include="Impostos\Orcamento.cs" />
-    <Compile Include="Investimentos\Arrojado.cs" />
-    <Compile Include="Investimentos\Conservador.cs" />
-    <Compile Include="Investimentos\Contas.cs" />
+    <Compile Include="Strategy\Impostos\Orcamento.cs" />
+    <Compile Include="Interfaces\IFormato.cs" />
+    <Compile Include="Strategy\Investimentos\Arrojado.cs" />
+    <Compile Include="Strategy\Investimentos\Conservador.cs" />
+    <Compile Include="Strategy\Investimentos\Contas.cs" />
     <Compile Include="Interfaces\IInvestimento.cs" />
-    <Compile Include="Investimentos\Moderado.cs" />
-    <Compile Include="Investimentos\RealizadorInvestimentos.cs" />
+    <Compile Include="Strategy\Investimentos\Moderado.cs" />
+    <Compile Include="Strategy\Investimentos\RealizadorInvestimentos.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ChainResponsability\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

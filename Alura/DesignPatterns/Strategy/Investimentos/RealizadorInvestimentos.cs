@@ -12,9 +12,9 @@ namespace DesignPatterns.Investimentos
 
         public void EfetuarInvestimento(Conta conta, Investimento investimento)
         {
-            Console.WriteLine($"Saldo Atual: {conta.ConsultarSaldo()}");
+            Console.WriteLine($"Saldo Atual: {conta.Saldo}");
 
-            double saldo = conta.ConsultarSaldo();
+            double saldo = conta.Saldo;
             double retornoBrutoDoInvestimento = investimento.RetornoSobreInvestimento(saldo);
 
             double valorDesconto = retornoBrutoDoInvestimento * taxaImpostoGoverno;
@@ -25,7 +25,7 @@ namespace DesignPatterns.Investimentos
             Console.WriteLine($"Valor a receber: {retornoLiquidoDoInvestimento}");
 
             conta.Depositar(retornoLiquidoDoInvestimento);
-            Console.WriteLine($"Saldo Atualizado: {conta.ConsultarSaldo()}");
+            Console.WriteLine($"Saldo Atualizado: {conta.Saldo}");
             Console.WriteLine();
         }
 

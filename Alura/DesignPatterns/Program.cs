@@ -1,5 +1,7 @@
 ﻿using DesignPatterns.Descontos;
+using DesignPatterns.FormatosExportar;
 using DesignPatterns.Impostos;
+using DesignPatterns.Interfaces;
 using DesignPatterns.Investimentos;
 using System;
 
@@ -11,7 +13,9 @@ namespace DesignPatterns
         {
             //Impostos(); 
             //Investimentos(); 
-            Descontos();
+            //Descontos();
+            //RequisicaoNoFormatoDesejado();
+
             Console.ReadKey();
         }
 
@@ -61,7 +65,6 @@ namespace DesignPatterns
         {
             Compra compra = new Compra();
 
-
             //Item teste = new Item("teste", 5d); //Caso dos dois descontos com pobrema perguntar mano Carlos
             //compra.AdicionarItem(teste, 100);
 
@@ -89,7 +92,22 @@ namespace DesignPatterns
             Console.WriteLine($"Total com Desconto = {compra.Total()}");
         }
 
+
+        private static void RequisicaoNoFormatoDesejado()
+        {
+            Conta conta = new Conta("Haniescreiçon", 25, "5575-X");
+            conta.Depositar(1000000d);
+
+            IFormato xml = new XML(null);
+            IFormato porcento = new PORCENTO(xml);
+            IFormato csv = new CSV(porcento);
+
+            string requisicao = csv.Requisicao(conta, Formato.XML);
+            Console.WriteLine(requisicao);
+        }
+
         #endregion
+
 
     }
 }
