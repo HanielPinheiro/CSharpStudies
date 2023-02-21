@@ -42,7 +42,7 @@ namespace DesignPatterns.Investimentos
 
         public override string ToString()
         {
-            return Cliente + ", " + Agencia + ", " + NumConta + ", " + Saldo;
+            return "Titular: " + Cliente + ", Agência: " + Agencia + ", Número da Conta: " + NumConta + ", Saldo: " + Saldo;
         }
     }
 }

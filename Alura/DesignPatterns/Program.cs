@@ -3,7 +3,10 @@ using DesignPatterns.FormatosExportar;
 using DesignPatterns.Impostos;
 using DesignPatterns.Interfaces;
 using DesignPatterns.Investimentos;
+using DesignPatterns.TemplateMethod.Imposto;
+using DesignPatterns.TemplateMethod.Relatorios;
 using System;
+using System.Collections.Generic;
 
 namespace DesignPatterns
 {
@@ -13,8 +16,12 @@ namespace DesignPatterns
         {
             //Impostos(); 
             //Investimentos(); 
+
             //Descontos();
             //RequisicaoNoFormatoDesejado();
+
+            //TemplateImpostos();
+            GerandoRelatorios();
 
             Console.ReadKey();
         }
@@ -104,6 +111,41 @@ namespace DesignPatterns
 
             string requisicao = csv.Requisicao(conta, Formato.XML);
             Console.WriteLine(requisicao);
+        }
+
+        #endregion
+
+        #region TemplateMethod
+
+        public static void TemplateImpostos()
+        {
+            IImposto ikcv = new IKCV();
+            IImposto icpp = new ICPP();
+
+            CalculadorDeImpostos calculador = new CalculadorDeImpostos();
+
+            Orcamento orcamento = new Orcamento(600d);
+            Orcamento orcamento2 = new Orcamento(1500d);
+
+            calculador.RealizaCalculo(orcamento, ikcv);
+            calculador.RealizaCalculo(orcamento2, icpp);
+        }
+
+        public static void GerandoRelatorios()
+        {
+            Banco banco = new Banco("NewBank", "11 2222-3030", "Rua dos bobos, numero 0", "nuncaAtendem@newbank.com.br");
+
+            List<Conta> contas = new List<Conta>
+            {
+                new Conta("Jose", 1, "0001"),
+                new Conta("Joao", 2, "0002")
+            };
+
+            var relatorioSimples = new RelatorioSimples();
+            var relatorioComplexo = new RelatorioComplexo();
+
+            relatorioSimples.ImprimeRelatorio(banco, contas);
+            relatorioComplexo.ImprimeRelatorio(banco, contas);
         }
 
         #endregion

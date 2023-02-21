@@ -62,8 +62,14 @@
     <Compile Include="Strategy\Investimentos\Moderado.cs" />
     <Compile Include="Strategy\Investimentos\RealizadorInvestimentos.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="TemplateMethod\ICPP.cs" />
-    <Compile Include="TemplateMethod\IKCV.cs" />
+    <Compile Include="TemplateMethod\Imposto\ICPP.cs" />
+    <Compile Include="TemplateMethod\Imposto\IHIT.cs" />
+    <Compile Include="TemplateMethod\Imposto\IKCV.cs" />
+    <Compile Include="TemplateMethod\Imposto\TemplateDeImpostoCondicional.cs" />
+    <Compile Include="TemplateMethod\Relatorios\Banco.cs" />
+    <Compile Include="TemplateMethod\Relatorios\TemplateRelatorio.cs" />
+    <Compile Include="TemplateMethod\Relatorios\RelatorioComplexo.cs" />
+    <Compile Include="TemplateMethod\Relatorios\RelatorioSimples.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
