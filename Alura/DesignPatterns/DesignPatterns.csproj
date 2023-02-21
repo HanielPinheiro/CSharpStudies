@@ -37,22 +37,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Descontos\CalculadorDescontos.cs" />
-    <Compile Include="Descontos\Compra.cs" />
-    <Compile Include="Descontos\DescontoVendaCasada.cs" />
-    <Compile Include="Requisicao\CSV.cs" />
-    <Compile Include="Requisicao\PORCENTO.cs" />
-    <Compile Include="Requisicao\XML.cs" />
+    <Compile Include="ChainResponsability\Descontos\CalculadorDescontos.cs" />
+    <Compile Include="ChainResponsability\Descontos\Compra.cs" />
+    <Compile Include="ChainResponsability\Descontos\DescontoVendaCasada.cs" />
+    <Compile Include="ChainResponsability\Requisicao\CSV.cs" />
+    <Compile Include="ChainResponsability\Requisicao\PORCENTO.cs" />
+    <Compile Include="ChainResponsability\Requisicao\XML.cs" />
     <Compile Include="Interfaces\IDesconto.cs" />
-    <Compile Include="Descontos\DescontoCincoItens.cs" />
-    <Compile Include="Descontos\DescontoQuinhentosReais.cs" />
-    <Compile Include="Descontos\SemDesconto.cs" />
+    <Compile Include="ChainResponsability\Descontos\DescontoCincoItens.cs" />
+    <Compile Include="ChainResponsability\Descontos\DescontoQuinhentosReais.cs" />
+    <Compile Include="ChainResponsability\Descontos\SemDesconto.cs" />
     <Compile Include="Strategy\Impostos\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Impostos\ICCC.cs" />
     <Compile Include="Strategy\Impostos\ICMS.cs" />
     <Compile Include="Interfaces\IImposto.cs" />
     <Compile Include="Strategy\Impostos\ISS.cs" />
-    <Compile Include="Descontos\Item.cs" />
+    <Compile Include="ChainResponsability\Descontos\Item.cs" />
     <Compile Include="Strategy\Impostos\Orcamento.cs" />
     <Compile Include="Interfaces\IFormato.cs" />
     <Compile Include="Strategy\Investimentos\Arrojado.cs" />
@@ -62,10 +62,10 @@
     <Compile Include="Strategy\Investimentos\Moderado.cs" />
     <Compile Include="Strategy\Investimentos\RealizadorInvestimentos.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="TemplateMethod\ICPP.cs" />
+    <Compile Include="TemplateMethod\IKCV.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ChainResponsability\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="System.Xml" />
   </ItemGroup>
