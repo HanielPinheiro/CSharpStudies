@@ -1,4 +1,5 @@
-﻿using DesignPatterns.Descontos;
+﻿using DesignPatterns.Decorator;
+using DesignPatterns.Descontos;
 using DesignPatterns.FormatosExportar;
 using DesignPatterns.Impostos;
 using DesignPatterns.Interfaces;
@@ -21,7 +22,9 @@ namespace DesignPatterns
             //RequisicaoNoFormatoDesejado();
 
             //TemplateImpostos();
-            GerandoRelatorios();
+            //GerandoRelatorios();
+
+            DecorandoImpostos();
 
             Console.ReadKey();
         }
@@ -30,7 +33,7 @@ namespace DesignPatterns
 
         private static void Impostos()
         {
-            IImposto iccc = new ICCC();
+            IImposto iccc = new Impostos.ICCC();
 
             CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
@@ -119,8 +122,8 @@ namespace DesignPatterns
 
         public static void TemplateImpostos()
         {
-            IImposto ikcv = new IKCV();
-            IImposto icpp = new ICPP();
+            IImposto ikcv = new TemplateMethod.Imposto.IKCV();
+            IImposto icpp = new TemplateMethod.Imposto.ICPP();
 
             CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
@@ -150,7 +153,18 @@ namespace DesignPatterns
 
         #endregion
 
+        #region Decorator
+        public static void DecorandoImpostos()
+        {
+            Imposto iss = new Decorator.ISS(new Decorator.ICMS( new Decorator.IKCV(null) ));
 
+            Orcamento orcamento = new Orcamento(500);
+
+            double valor = iss.Calcular(orcamento);
+
+            Console.WriteLine(valor);
+        }
+        #endregion
     }
 }
 

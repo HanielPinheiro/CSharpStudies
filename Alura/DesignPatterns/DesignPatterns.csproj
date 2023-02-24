@@ -43,6 +43,14 @@
     <Compile Include="ChainResponsability\Requisicao\CSV.cs" />
     <Compile Include="ChainResponsability\Requisicao\PORCENTO.cs" />
     <Compile Include="ChainResponsability\Requisicao\XML.cs" />
+    <Compile Include="Decorator\ICCC.cs" />
+    <Compile Include="Decorator\ICMS.cs" />
+    <Compile Include="Decorator\ICPP.cs" />
+    <Compile Include="Decorator\IHIT.cs" />
+    <Compile Include="Decorator\IKCV.cs" />
+    <Compile Include="Decorator\Imposto.cs" />
+    <Compile Include="Decorator\ISS.cs" />
+    <Compile Include="Decorator\TemplateDeImpostoCondicional.cs" />
     <Compile Include="Interfaces\IDesconto.cs" />
     <Compile Include="ChainResponsability\Descontos\DescontoCincoItens.cs" />
     <Compile Include="ChainResponsability\Descontos\DescontoQuinhentosReais.cs" />
