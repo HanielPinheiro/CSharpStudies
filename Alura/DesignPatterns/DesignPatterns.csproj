@@ -48,6 +48,7 @@
     <Compile Include="Decorator\ICPP.cs" />
     <Compile Include="Decorator\IHIT.cs" />
     <Compile Include="Decorator\IKCV.cs" />
+    <Compile Include="Decorator\IMA.cs" />
     <Compile Include="Decorator\Imposto.cs" />
     <Compile Include="Decorator\ISS.cs" />
     <Compile Include="Decorator\TemplateDeImpostoCondicional.cs" />

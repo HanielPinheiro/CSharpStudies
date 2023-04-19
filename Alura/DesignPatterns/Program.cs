@@ -156,7 +156,7 @@ namespace DesignPatterns
         #region Decorator
         public static void DecorandoImpostos()
         {
-            Imposto iss = new Decorator.ISS(new Decorator.ICMS( new Decorator.IKCV(null) ));
+            Imposto iss = new Decorator.ISS( new Decorator.ICMS( new IMA(null) ) );
 
             Orcamento orcamento = new Orcamento(500);
 
