@@ -34,7 +34,6 @@
                 default: 
                     return "An unpredictable error was mistake!";
             }
-
         }
     }
 }

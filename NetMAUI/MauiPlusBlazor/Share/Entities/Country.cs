@@ -8,7 +8,7 @@ namespace Share.Entities
 
         [Required(ErrorMessage = "The field {0} is required!")]
         [MaxLength(100, ErrorMessage ="The field {0} can't have more than {1} characters")]
-        [Display(Name = "País")]
+        [Display(Name = "Country")]
         public string Name { get; set; } = null!;
     }
 }
