@@ -10,5 +10,9 @@ namespace Share.Entities
         [MaxLength(100, ErrorMessage ="The field {0} can't have more than {1} characters")]
         [Display(Name = "Country")]
         public string Name { get; set; } = null!;
+
+        public ICollection<State>? States { get; set; }
+
+        public int StatesNumber => States == null ? 0 : States.Count;
     }
 }

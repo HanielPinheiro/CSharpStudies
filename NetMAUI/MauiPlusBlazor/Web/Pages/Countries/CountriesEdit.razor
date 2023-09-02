@@ -12,19 +12,22 @@
 }
 else
 {
-    <CountryForm @ref="countryForm" Country="country" OnValidSubmit="EditAsync" ReturnAction="Return"></CountryForm>
+    <CountriesForm @ref="countriesForm" Country="country" OnValidSubmit="EditAsync" ReturnAction="Return"></CountriesForm>
 }
 
 @code {
     private Country? country;
-    private CountryForm? countryForm;
+    private CountriesForm? countriesForm;
+
+    private const string countries = "/countries";
+    private const string prefix = $"/api{countries}/";
 
     [Parameter]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHttp = await repository.Post<Country>($"/api/countries/retrieveById/{Id}");
+        var responseHttp = await repository.Post<Country>($"{prefix}retrieveById/{Id}");
         if(responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
@@ -41,19 +44,19 @@ else
 
     private async Task EditAsync()
     {
-        var responseHttp = await repository.Put("/api/countries/update", country);
+        var responseHttp = await repository.Put($"{prefix}update", country);
         if(responseHttp.Error)
         {
             await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
         }
-        countryForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo("/countries");
+        countriesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo(countries);
     }
 
     private void Return()
     {
-        countryForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo("/countries");
+        countriesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo(countries);
     }
 }

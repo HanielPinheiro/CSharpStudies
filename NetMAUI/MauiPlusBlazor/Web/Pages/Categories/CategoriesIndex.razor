@@ -1,35 +1,31 @@
-﻿@page "/countries"
+﻿@page "/categories"
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 @inject NavigationManager navigationManager
 
-<h3>Countries</h3>
+<h3>Categories</h3>
 
- <a class="btn btn-primary" href="/countries/create">New Country</a>
+ <a class="btn btn-primary" href="/categories/create">New Categorie</a>
 
-<GenericList MyList="Countries">
+<GenericList MyList="Categories">
     <Body>  
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Countries</th>
-                <th>States</th>
-                <th>Action</th>
+                <th></th>
+                <th>Country</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var country in Countries!)
+            @foreach (var categorie in Categories!)
             {
                 <tr>
                     <td>
-                        @country.Name
+                        <a class="btn btn-warning" href="@categories/edit/@categorie.Id">Edit</a>
+                        <button class="btn btn-danger" @onclick="(() => DeleteAsync(categorie.Id))">Remove</button>
                     </td>
                     <td>
-                        @country.StatesNumber
-                    </td>
-                    <td>
-                        <a class="btn btn-warning" href="/countries/edit/@country.Id">Edit</a>
-                        <button class="btn btn-danger" @onclick="(() => DeleteAsync(country.Id))">Remove</button>
+                        @categorie.Name
                     </td>
                 </tr>   
             }
@@ -39,19 +35,20 @@
 </GenericList>
 
 @code {
-    public List<Country>? Countries { get; set; }
-    private const string countries = "/countries";
-    private const string prefix = $"/api{countries}/";
+    private const string categories = "/categories";
+    private const string prefix = $"/api{categories}/";
 
-    protected override  async Task OnInitializedAsync()
+    public List<Categorie>? Categories { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
         await LoadAsync();
     }
 
     private async Task LoadAsync()
     {
-        var responseHttp = await repository.Post<List<Country>>($"{prefix}retrieve");
-        Countries = responseHttp.Response; 
+        var responseHttp = await repository.Post<List<Categorie>>($"{prefix}retrieve");
+        Categories = responseHttp.Response; 
     }
 
     private async Task DeleteAsync(int id)
@@ -78,3 +75,5 @@
         await LoadAsync();
     }
 }
+
+
