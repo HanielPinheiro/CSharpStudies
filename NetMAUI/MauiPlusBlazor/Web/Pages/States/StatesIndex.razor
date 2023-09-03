@@ -85,7 +85,7 @@ else
         }
 
         country = responseHttp.Response;
-        states = country!.States!.ToList();
+        states = country!.States!.OrderBy(p => p.Name).ToList();
     }
 
     private async Task DeleteAsync(int id)

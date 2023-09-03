@@ -48,7 +48,7 @@
     private async Task LoadAsync()
     {
         var responseHttp = await repository.Post<List<Categorie>>($"{prefix}retrieve");
-        Categories = responseHttp.Response; 
+        Categories = responseHttp.Response!.OrderBy(p => p.Name).ToList(); 
     }
 
     private async Task DeleteAsync(int id)

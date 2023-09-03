@@ -52,7 +52,7 @@
     private async Task LoadAsync()
     {
         var responseHttp = await repository.Post<List<Country>>($"{prefix}retrieve");
-        Countries = responseHttp.Response; 
+        Countries = responseHttp.Response!.OrderBy(p => p.Name).ToList(); 
     }
 
     private async Task DeleteAsync(int id)
