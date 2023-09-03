@@ -49,7 +49,7 @@ namespace API.Controllers
             }
         }
 
-        [Route("retrieveById/{id:int}")]
+        [Route("retrieve/{id:int}")]
         [HttpPost]
         public async Task<IActionResult> RetrieveItem(int id)
         {

@@ -1,12 +1,12 @@
-﻿@page "/countries/edit/{Id:int}"
+﻿@page "/cities/edit/{Id:int}"
 
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 @inject NavigationManager navigationManager
 
-<h3>Country Edit</h3>
+<h3>Edit City</h3>
 
-@if(country is null)
+@if(city is null)
 {
       <div class="align-items-center">
             <img src="https://cdnl.iconscout.com/lottie/premium/thumb/loading-dots-5711313-4752313.gif">
@@ -14,51 +14,51 @@
 }
 else
 {
-    <CountriesForm @ref="countriesForm" Country="country" OnValidSubmit="EditAsync" ReturnAction="Return"></CountriesForm>
+    <CitiesForm @ref="citiesForm" City="city" OnValidSubmit="EditAsync" ReturnAction="Return"></CitiesForm>
 }
 
 @code {
-    private Country? country;
-    private CountriesForm? countriesForm;
+    private City? city;
+    private CitiesForm? citiesForm;
 
-    private const string countries = "/countries";
-    private const string prefix = $"/api{countries}/";
+    private const string cities = "/cities";
+    private const string prefix = $"/api{cities}/";
 
     [Parameter]
     public int Id { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHttp = await repository.Post<Country>($"{prefix}retrieve/{Id}");
+        var responseHttp = await repository.Post<City>($"{prefix}retrieve/{Id}");
         if(responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
             {
-                await sweetAlertService.FireAsync("Error", "Country not found", SweetAlertIcon.Warning);
+                await sweetAlertService.FireAsync("Error", $"{nameof(City)} not found", SweetAlertIcon.Warning);
                 return;
             }
             await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
         }
 
-        country = responseHttp.Response;
+        city = responseHttp.Response;
     }
 
     private async Task EditAsync()
     {
-        var responseHttp = await repository.Put($"{prefix}update", country);
+        var responseHttp = await repository.Put($"{prefix}update", city);
         if(responseHttp.Error)
         {
             await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
         }
-        countriesForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo(countries);
+        citiesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo($"{cities}/{city!.StateId}");
     }
 
     private void Return()
     {
-        countriesForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo(countries);
+        citiesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo($"{cities}/{city!.StateId}");
     }
 }

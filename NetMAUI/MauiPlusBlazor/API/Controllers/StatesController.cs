@@ -6,30 +6,30 @@ using Share.Entities;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("/api/countries")]
-    public class CountriesController : ControllerBase
+    [Route("/api/states")]
+    public class StatesController : ControllerBase
     {
         private readonly DataContext _context;
 
-        public CountriesController(DataContext context)
+        public StatesController(DataContext context)
         {
             _context = context;
         }
 
         [Route("create")]
         [HttpPost]
-        public async Task<ActionResult> InsertItem(Country country)
+        public async Task<ActionResult> InsertItem(State state)
         {
             try
             {
-                _context.Add(country);
+                _context.Add(state);
                 await _context.SaveChangesAsync();
-                return Ok(country);
+                return Ok(state);
             }
             catch (Exception ex)
             {
                 if (ex.InnerException!.Message.Contains("duplicate")) 
-                    return BadRequest($"Already exists a {nameof(Country)} with his name");
+                    return BadRequest($"Already exists a {nameof(State)} with his name");
 
                 return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
             }
@@ -41,7 +41,7 @@ namespace API.Controllers
         {
             try
             {
-                return Ok(await _context.Countries.Include(x => x.States!).ThenInclude(x => x.Cities).ToListAsync());
+                return Ok(await _context.States.Include(x => x.Cities!).ToListAsync());
             }
             catch (Exception ex)
             {
@@ -55,11 +55,11 @@ namespace API.Controllers
         {
             try
             {
-                Country? country = await _context.Countries.Include(x => x.States!).ThenInclude(x => x.Cities).FirstOrDefaultAsync(x => x.Id == id);
+                State? state = await _context.States.Include(x => x.Cities!).FirstOrDefaultAsync(x => x.Id == id);
 
-                if (country == null) return NotFound();
+                if (state == null) return NotFound();
 
-                return Ok(country);
+                return Ok(state);
             }
             catch (Exception ex)
             {
@@ -69,13 +69,13 @@ namespace API.Controllers
 
         [Route("update")]
         [HttpPut]
-        public async Task<ActionResult> PutAsync(Country country)
+        public async Task<ActionResult> PutAsync(State state)
         {
             try
             {
-                _context.Update(country);
+                _context.Update(state);
                 await _context.SaveChangesAsync();
-                return Ok(country);
+                return Ok(state);
             }
             catch (Exception ex)
             {
@@ -89,10 +89,10 @@ namespace API.Controllers
         {
             try
             {
-                var country = await _context.Countries.FirstOrDefaultAsync(x => x.Id == id);
-                if (country == null) return NotFound();
+                State? state = await _context.States.FirstOrDefaultAsync(x => x.Id == id);
+                if (state == null) return NotFound();
 
-                _context.Remove(country);
+                _context.Remove(state);
                 await _context.SaveChangesAsync();
 
                 return NoContent();

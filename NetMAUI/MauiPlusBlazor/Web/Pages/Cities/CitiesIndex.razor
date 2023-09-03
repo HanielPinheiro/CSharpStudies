@@ -1,36 +1,44 @@
-﻿@page "/countries"
+﻿@page "/cities/{StateId:int}"
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 @inject NavigationManager navigationManager
 
-<h3>Countries</h3>
+@if(State is null)
+{
+      <div class="align-items-center">
+            <img src="https://cdnl.iconscout.com/lottie/premium/thumb/loading-dots-5711313-4752313.gif">
+      </div>
+}
+else
+{
+<h3>@Name</h3>
 
- <a class="btn btn-primary" href="/countries/create">New Country</a>
+    <div class="mb-2">
+          <a class="btn btn-primary" href="/cities/create/@StateId">New City</a>
+          <a class="btn btn-success" href="/states/@State!.CountryId">Return</a>
+    </div>
 
-<GenericList MyList="Countries">
+@if (cities.Length > 0)
+{
+<GenericList MyList="Cities">
     <Body>  
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Countries</th>
-                <th>States</th>
+                <th>Cities</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var country in Countries!)
+            @foreach (var city in Cities!)
             {
                 <tr>
                     <td>
-                        @country.Name
+                        @city.Name
                     </td>
                     <td>
-                        @country.StatesNumber
-                    </td>
-                    <td>
-                        <a class="btn btn-info" href="/states/@country.Id">View States</a>
-                        <a class="btn btn-warning" href="/countries/edit/@country.Id">Edit</a>
-                        <button class="btn btn-danger" @onclick="(() => DeleteAsync(country.Id))">Remove</button>
+                        <a class="btn btn-warning" href="/cities/edit/@city.Id">Edit</a>
+                        <button class="btn btn-danger" @onclick="(() => DeleteAsync(city.Id))">Remove</button>
                     </td>
                 </tr>   
             }
@@ -38,21 +46,42 @@
     </table>
     </Body>
 </GenericList>
+}
+}
+
+
+
 
 @code {
-    public List<Country>? Countries { get; set; }
-    private const string countries = "/countries";
-    private const string prefix = $"/api{countries}/";
+    public List<City>? Cities { get; set; }
+    private State? State{ get; set; }
+    private string? Name { get; set; } = string.Empty;
+
+    private const string cities = "/cities";
+    private const string prefix = $"/api{cities}/";
+
+    [Parameter]
+    public int StateId { get; set; }
 
     protected override  async Task OnInitializedAsync()
     {
+        var responseHttp = await repository.Post<State>($"/api/states/retrieve/{StateId}");
+        State = responseHttp.Response;
+        Name = State!.Name;
         await LoadAsync();
     }
 
     private async Task LoadAsync()
     {
-        var responseHttp = await repository.Post<List<Country>>($"{prefix}retrieve");
-        Countries = responseHttp.Response; 
+        try
+        {
+            var responseHttp = await repository.Post<List<City>>($"{prefix}retrieve");
+            Cities = responseHttp.Response!.Where(x => x.StateId == StateId).ToList();         
+        }
+        catch(Exception ex)
+        {
+            await sweetAlertService.FireAsync(ex.Message);
+        }
     }
 
     private async Task DeleteAsync(int id)

@@ -1,0 +1,114 @@
+﻿@page "/states/{CountryId:int}"
+@inject IRepository repository
+@inject SweetAlertService sweetAlertService
+@inject NavigationManager navigationManager
+
+@if (country is null)
+{
+      <div class="align-items-center">
+            <img src="https://cdnl.iconscout.com/lottie/premium/thumb/loading-dots-5711313-4752313.gif">
+      </div>
+}
+else
+{
+    <h3>@country.Name</h3>
+    <div class="mb-2">
+          <a class="btn btn-primary" href="/states/create/@CountryId">New State</a>
+          <a class="btn btn-success" href="/countries">Return</a>
+    </div>
+
+    
+<GenericList MyList="states">
+    <Body>  
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>States</th>
+                <th>Cities</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var state in states!)
+            {
+                <tr>
+                    <td>
+                        @state.Name
+                    </td>
+                    <td>
+                        @state.CitiesNumber
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="/cities/@state.Id">View Cities</a>
+                        <a class="btn btn-warning" href="/states/edit/@state.Id">Edit</a>
+                        <button class="btn btn-danger" @onclick="(() => DeleteAsync(state.Id))">Remove</button>
+                    </td>
+                </tr>   
+            }
+        </tbody>
+    </table>
+    </Body>
+</GenericList>
+}
+
+@code {
+    private Country? country;
+    private List<State>? states;
+
+    private const string statesConst = "/states";
+    private const string prefixStates= $"/api{statesConst}/";
+
+    private const string countriesConst = "/countries";
+    private const string prefixCountries= $"/api{countriesConst}/";
+
+    [Parameter]
+    public int CountryId { get; set; }
+
+    protected override  async Task OnInitializedAsync()
+    {
+        await LoadAsync();
+    }
+
+
+    private async Task LoadAsync()
+    {
+        var responseHttp = await repository.Post<Country>($"{prefixCountries}retrieve/{CountryId}");
+        if (responseHttp.Error)
+        {
+            if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                await sweetAlertService.FireAsync("Error", "Country not found", SweetAlertIcon.Warning);
+                return;
+            }
+            await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
+
+        country = responseHttp.Response;
+        states = country!.States!.ToList();
+    }
+
+    private async Task DeleteAsync(int id)
+    {        
+        SweetAlertResult result = await sweetAlertService.FireAsync(new SweetAlertOptions()
+                {
+                    Title = "Confirmation",
+                    Text = "Do you want to abandon this page, you will lost all content!",
+                    Icon = SweetAlertIcon.Question,
+                    ShowCancelButton = true,
+                    CancelButtonText = "No",
+                    ConfirmButtonText = "Yes"
+                });
+
+        if (string.IsNullOrEmpty(result.Value)) return;
+
+        var responseHttp = await repository.Delete($"{prefixStates}delete/{id}");
+        if(responseHttp.Error && responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
+        {
+            await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
+
+        await LoadAsync();
+    }
+ }

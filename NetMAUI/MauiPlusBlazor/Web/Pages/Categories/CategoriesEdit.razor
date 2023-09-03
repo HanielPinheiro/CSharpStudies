@@ -27,7 +27,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHttp = await repository.Post<Categorie>($"{prefix}retrieveById/{Id}");
+        var responseHttp = await repository.Post<Categorie>($"{prefix}retrieve/{Id}");
         if(responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)

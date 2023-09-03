@@ -1,12 +1,12 @@
-﻿@page "/countries/edit/{Id:int}"
+﻿@page "/states/edit/{StateId:int}"
 
 @inject IRepository repository
 @inject SweetAlertService sweetAlertService
 @inject NavigationManager navigationManager
 
-<h3>Country Edit</h3>
+<h3>State Edit</h3>
 
-@if(country is null)
+@if(state is null)
 {
       <div class="align-items-center">
             <img src="https://cdnl.iconscout.com/lottie/premium/thumb/loading-dots-5711313-4752313.gif">
@@ -14,22 +14,22 @@
 }
 else
 {
-    <CountriesForm @ref="countriesForm" Country="country" OnValidSubmit="EditAsync" ReturnAction="Return"></CountriesForm>
+    <StatesForm @ref="statesForm" State="state" OnValidSubmit="EditAsync" ReturnAction="Return"></StatesForm>
 }
 
 @code {
-    private Country? country;
-    private CountriesForm? countriesForm;
+    private State? state;
+    private StatesForm? statesForm;
 
-    private const string countries = "/countries";
-    private const string prefix = $"/api{countries}/";
+    private const string states = "/states";
+    private const string prefix = $"/api{states}/";
 
     [Parameter]
-    public int Id { get; set; }
+    public int StateId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var responseHttp = await repository.Post<Country>($"{prefix}retrieve/{Id}");
+        var responseHttp = await repository.Post<State>($"{prefix}retrieve/{StateId}");
         if(responseHttp.Error)
         {
             if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
@@ -41,24 +41,24 @@ else
             return;
         }
 
-        country = responseHttp.Response;
+        state = responseHttp.Response;
     }
 
     private async Task EditAsync()
     {
-        var responseHttp = await repository.Put($"{prefix}update", country);
+        var responseHttp = await repository.Put($"{prefix}update", state);
         if(responseHttp.Error)
         {
             await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
         }
-        countriesForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo(countries);
+        statesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo($"{states}/{state!.CountryId}");
     }
 
     private void Return()
     {
-        countriesForm!.FormPostedSuccesfully = true;
-        navigationManager.NavigateTo(countries);
+        statesForm!.FormPostedSuccesfully = true;
+        navigationManager.NavigateTo($"{states}/{state!.CountryId}");
     }
 }
