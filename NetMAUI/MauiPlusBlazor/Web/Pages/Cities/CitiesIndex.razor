@@ -1,6 +1,6 @@
 ﻿@page "/cities/{StateId:int}"
 @inject IRepository repository
-@inject SweetAlertService sweetAlertService
+@inject SweetAlertService alert
 @inject NavigationManager navigationManager
 
 @if(State is null)
@@ -13,9 +13,20 @@ else
 {
 <h3>@Name</h3>
 
-    <div class="mb-2">
+<Pagination CurrentPage="currentPage" TotalPages="totalPages" SelectedPage="SelectedPage" />    
+
+    <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+       <div class="mb-2">
           <a class="btn btn-primary" href="/cities/create/@StateId">New City</a>
           <a class="btn btn-success" href="/states/@State!.CountryId">Return</a>
+    </div>
+        <div class="mx-2">
+            <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar ciudad..." @bind-value="Filter" />
+        </div>
+        <div>
+            <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync">Filtrar</button>
+            <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync">Limpiar</button>
+        </div>
     </div>
 
 @if (cities.Length > 0)
@@ -53,12 +64,23 @@ else
     public List<City>? Cities { get; set; }
     private State? State{ get; set; }
     private string? Name { get; set; } = string.Empty;
+    private int currentPage = 1;
+    private int totalPages;
 
     private const string cities = "/cities";
     private const string prefix = $"/api{cities}/";
 
     [Parameter]
     public int StateId { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Page { get; set; } = "";
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Filter { get; set; } = "";
+
 
     protected override  async Task OnInitializedAsync()
     {
@@ -68,40 +90,72 @@ else
         await LoadAsync();
     }
 
-    private async Task LoadAsync()
+    private async Task LoadAsync(int page = 1)
     {
-        try
+        if (!string.IsNullOrWhiteSpace(Page))
         {
-            var responseHttp = await repository.Post<List<City>>($"{prefix}retrieve");
-            Cities = responseHttp.Response!.Where(x => x.StateId == StateId).OrderBy(p => p.Name).ToList();         
+            page = Convert.ToInt32(Page);
         }
-        catch(Exception ex)
+
+        string url1 = $"{prefix}retrieveAll/{StateId}?page={page}";
+        string url2 = $"{prefix}totalPages/{StateId}";
+
+        if (!string.IsNullOrEmpty(Filter))
         {
-            await sweetAlertService.FireAsync(ex.Message);
+            url1 += $"&filter={Filter}";
+            url2 += $"?filter={Filter}";
         }
+
+        var responseHttp = await repository.Post<List<City>>(url1);
+        if (responseHttp.Error) 
+        {
+            await alert.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
+        Cities = responseHttp.Response!.OrderBy(p => p.Name).ToList();       
+            
+        var responseHttp2 = await repository.Post<int>(url2);
+        if (responseHttp2.Error) 
+        {
+            await alert.FireAsync("Error", await responseHttp2.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        } 
+        totalPages = responseHttp2.Response!;        
     }
 
     private async Task DeleteAsync(int id)
     {        
-        SweetAlertResult result = await sweetAlertService.FireAsync(new SweetAlertOptions()
-                {
-                    Title = "Confirmation",
-                    Text = "Do you want to abandon this page, you will lost all content!",
-                    Icon = SweetAlertIcon.Question,
-                    ShowCancelButton = true,
-                    CancelButtonText = "No",
-                    ConfirmButtonText = "Yes"
-                });
-
-        if (string.IsNullOrEmpty(result.Value)) return;
+        var result = await alert.Ask("Question", $"Do you want to delete this {nameof(City)}: {Cities!.Where(p => p.Id == id).FirstOrDefault()!.Name}?");
+        if (!result) return;
 
         var responseHttp = await repository.Delete($"{prefix}delete/{id}");
         if(responseHttp.Error && responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
         {
-            await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+            await alert.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
         }
 
-        await LoadAsync();
+        await LoadAsync();        
     }
+
+    private async Task SelectedPage(int page)
+    {
+        if (page == totalPages + 1) return;
+        currentPage = page;
+        await LoadAsync(page);
+    }    
+    
+     private async Task CleanFilterAsync()
+    {
+        Filter = string.Empty;
+        await ApplyFilterAsync();
+    }
+
+    private async Task ApplyFilterAsync()
+    {
+        int page = 1;
+        await LoadAsync(page);
+        await SelectedPage(page);
+    }
+
 }

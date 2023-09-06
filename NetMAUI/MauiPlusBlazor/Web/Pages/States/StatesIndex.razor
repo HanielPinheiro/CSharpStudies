@@ -1,7 +1,6 @@
 ﻿@page "/states/{CountryId:int}"
 @inject IRepository repository
-@inject SweetAlertService sweetAlertService
-@inject NavigationManager navigationManager
+@inject SweetAlertService alert
 
 @if (country is null)
 {
@@ -12,11 +11,24 @@
 else
 {
     <h3>@country.Name</h3>
-    <div class="mb-2">
+
+    
+
+      <div class="mb-2" style="display: flex; flex-wrap:wrap; align-items: center;">
+       <div class="mb-2">
           <a class="btn btn-primary" href="/states/create/@CountryId">New State</a>
           <a class="btn btn-success" href="/countries">Return</a>
+        </div>
+        <div class="mx-2">
+            <input style="width: 400px;" type="text" class="form-control" id="titulo" placeholder="Buscar estado/departamento..." @bind-value="Filter" />
+        </div>
+        <div>
+            <button type="button" class="btn btn-outline-primary" @onclick="ApplyFilterAsync">Filtrar</button>
+            <button type="button" class="btn btn-outline-danger" @onclick="CleanFilterAsync">Limpiar</button>
+        </div>
     </div>
 
+     <Pagination CurrentPage="currentPage"TotalPages="totalPages"  SelectedPage="SelectedPage" />
     
 <GenericList MyList="states">
     <Body>  
@@ -54,12 +66,23 @@ else
 @code {
     private Country? country;
     private List<State>? states;
+    private int currentPage = 1;
+    private int totalPages;
 
     private const string statesConst = "/states";
     private const string prefixStates= $"/api{statesConst}/";
 
     private const string countriesConst = "/countries";
     private const string prefixCountries= $"/api{countriesConst}/";
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Page { get; set; } = "";
+
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string Filter { get; set; } = "";
+
 
     [Parameter]
     public int CountryId { get; set; }
@@ -69,46 +92,78 @@ else
         await LoadAsync();
     }
 
-
-    private async Task LoadAsync()
+    private async Task LoadAsync(int page = 1)
     {
-        var responseHttp = await repository.Post<Country>($"{prefixCountries}retrieve/{CountryId}");
-        if (responseHttp.Error)
+        if (!string.IsNullOrWhiteSpace(Page)) page = Convert.ToInt32(Page);
+
+
+        string url1 = $"{prefixStates}retrieveAll/{CountryId}?page={page}";
+        string url2 = $"{prefixStates}totalPages/{CountryId}";
+
+        if (!string.IsNullOrEmpty(Filter))
         {
-            if (responseHttp.HttpResponseMessage.StatusCode == HttpStatusCode.NotFound)
-            {
-                await sweetAlertService.FireAsync("Error", "Country not found", SweetAlertIcon.Warning);
-                return;
-            }
-            await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
-            return;
+            url1 += $"&filter={Filter}";
+            url2 += $"?filter={Filter}";
         }
 
+        var responseHttp = await repository.Post<Country>($"{prefixCountries}retrieve/{CountryId}");
+        if (responseHttp.Error) 
+        {
+            await alert.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
         country = responseHttp.Response;
-        states = country!.States!.OrderBy(p => p.Name).ToList();
+       
+        var responseHttp2 = await repository.Post<List<State>>(url1);
+        if (responseHttp2.Error) 
+        {
+            await alert.FireAsync("Error", await responseHttp2.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
+        states = responseHttp2.Response!.OrderBy(x => x.Name).ToList();
+
+        var responseHttp3 = await repository.Post<int>(url2);
+        if (responseHttp3.Error) 
+        {
+          await alert.FireAsync("Error", await responseHttp3.GetErrorMessage(), SweetAlertIcon.Error);
+            return;
+        }
+        totalPages = responseHttp3.Response;
     }
 
     private async Task DeleteAsync(int id)
     {        
-        SweetAlertResult result = await sweetAlertService.FireAsync(new SweetAlertOptions()
-                {
-                    Title = "Confirmation",
-                    Text = "Do you want to abandon this page, you will lost all content!",
-                    Icon = SweetAlertIcon.Question,
-                    ShowCancelButton = true,
-                    CancelButtonText = "No",
-                    ConfirmButtonText = "Yes"
-                });
+        var result = await alert.Ask("Question", $"Do you want to delete this {nameof(State)}: {states!.Where(p => p.Id == id).FirstOrDefault()!.Name}?");
+        if (!result) return;
 
-        if (string.IsNullOrEmpty(result.Value)) return;
-
-        var responseHttp = await repository.Delete($"{prefixStates}delete/{id}");
-        if(responseHttp.Error && responseHttp.HttpResponseMessage.StatusCode != HttpStatusCode.NotFound)
+        var responseHttp = await repository.Delete($"{prefixStates}delete/{id}");        
+        if (responseHttp.Error) 
         {
-            await sweetAlertService.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
+          await alert.FireAsync("Error", await responseHttp.GetErrorMessage(), SweetAlertIcon.Error);
             return;
-        }
+        }       
 
         await LoadAsync();
     }
+    
+    private async Task SelectedPage(int page)
+    {
+        if (page == totalPages + 1) return;
+        currentPage = page;
+        await LoadAsync(page);
+    }
+    
+    private async Task CleanFilterAsync()
+    {
+        Filter = string.Empty;
+        await ApplyFilterAsync();
+    }
+
+    private async Task ApplyFilterAsync()
+    {
+        int page = 1;
+        await LoadAsync(page);
+        await SelectedPage(page);
+    }
+
  }

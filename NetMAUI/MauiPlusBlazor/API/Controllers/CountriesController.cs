@@ -1,7 +1,10 @@
 ﻿using API.Data;
+using API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Share.DTOs;
 using Share.Entities;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -37,11 +40,17 @@ namespace API.Controllers
 
         [Route("retrieve")]
         [HttpPost]
-        public async Task<IActionResult> RetrieveItens()
+        public async Task<IActionResult> RetrieveItens([FromQuery] PaginationDTO pagination)
         {
             try
             {
-                return Ok(await _context.Countries.Include(x => x.States!).ThenInclude(x => x.Cities).ToListAsync());
+                var queryable = _context.Countries.Include(x => x.States!).ThenInclude(x => x.Cities).AsQueryable();
+               
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))                
+                    queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+                
+
+                return Ok(await queryable.Paginate(pagination).ToListAsync());
             }
             catch (Exception ex)
             {
@@ -60,6 +69,27 @@ namespace API.Controllers
                 if (country == null) return NotFound();
 
                 return Ok(country);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
+            }
+        }
+
+        [Route("totalPages")]
+        [HttpPost]
+        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination)
+        {
+            try
+            {
+                var query = _context.Countries.AsQueryable();
+                
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))                
+                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+
+                double count = await query.CountAsync();
+                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
+                return Ok(totalPages);
             }
             catch (Exception ex)
             {

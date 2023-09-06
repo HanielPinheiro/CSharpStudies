@@ -1,7 +1,10 @@
 ﻿using API.Data;
+using API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Share.DTOs;
 using Share.Entities;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -35,13 +38,18 @@ namespace API.Controllers
             }
         }
 
-        [Route("retrieve")]
+        [Route("retrieveAll/{CountryId:int}")]
         [HttpPost]
-        public async Task<IActionResult> RetrieveItens()
+        public async Task<IActionResult> RetrieveItens([FromQuery] PaginationDTO pagination, int CountryId)
         {
             try
             {
-                return Ok(await _context.States.Include(x => x.Cities!).ToListAsync());
+                var queryable = _context.States.Where(x => x.CountryId == CountryId).Include(x => x.Cities!).AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))
+                    queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+
+                return Ok(await queryable.Paginate(pagination).ToListAsync());
             }
             catch (Exception ex)
             {
@@ -60,6 +68,27 @@ namespace API.Controllers
                 if (state == null) return NotFound();
 
                 return Ok(state);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
+            }
+        }
+
+        [Route("totalPages/{CountryId:int}")]
+        [HttpPost]
+        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination, int CountryId)
+        {
+            try
+            {
+                var query = _context.States.Where(x => x.CountryId == CountryId).AsQueryable();
+                
+                if (!string.IsNullOrWhiteSpace(pagination.Filter)) 
+                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+               
+                double count = await query.CountAsync();
+                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
+                return Ok(totalPages);
             }
             catch (Exception ex)
             {

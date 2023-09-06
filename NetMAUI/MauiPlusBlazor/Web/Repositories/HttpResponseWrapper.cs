@@ -1,4 +1,6 @@
-﻿namespace Web.Repositories
+﻿using CurrieTechnologies.Razor.SweetAlert2;
+
+namespace Web.Repositories
 {
     public class HttpResponseWrapper<T>
     {
@@ -17,8 +19,6 @@
 
         public async Task<string?> GetErrorMessage()
         {
-            if (!Error) return null;
-
             var codeStatus = HttpResponseMessage.StatusCode;
 
             switch(codeStatus)
@@ -34,6 +34,6 @@
                 default: 
                     return "An unpredictable error was mistake!";
             }
-        }
+        } 
     }
 }
