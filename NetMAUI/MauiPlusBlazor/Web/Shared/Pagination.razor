@@ -1,6 +1,5 @@
 ﻿<nav>
     <ul class="pagination">
-
         @foreach (var link in Links)
         {
                 <li @onclick=@(() => InternalSelectedPage(link)) style="cursor: pointer" class="page-item @(link.Enable ? null : "disabled") @(link.Enable ? "active" : null)">
@@ -12,10 +11,14 @@
 
 
 @code {
+    private const int TEN = 10;
+    private int minIdx = 1;
+    private int maxIdx = TEN;
+
     [Parameter] public int CurrentPage { get; set; } = 1;
     [Parameter] public int TotalPages { get; set; }
-    [Parameter] public int Radio { get; set; } = 5;
     [Parameter] public EventCallback<int> SelectedPage { get; set; }
+
     List<PageModel> Links = new();
 
     protected override void OnParametersSet()
@@ -26,19 +29,21 @@
         int previousLinkPage = CurrentPage - 1;
         Links.Add(new PageModel{Text = "Previous",Page = previousLinkPage,Enable = previousLinkEnable});
 
-        for (int i = 1; i <= TotalPages; i++)        
-            if (i >= CurrentPage - Radio && i <= CurrentPage + Radio)            
-                Links.Add(new PageModel{Page = i,Enable = CurrentPage == i,Text = $"{i}"});
+        if (TotalPages < maxIdx) maxIdx = TotalPages;
+        if (maxIdx == 0) maxIdx = 10;
+        if(CurrentPage == minIdx && minIdx > 1) { minIdx--; maxIdx--;}
+        else if(CurrentPage == maxIdx && maxIdx < TotalPages){ minIdx++; maxIdx++; }
+        for (int i = minIdx; i <= maxIdx; i++) 
+            Links.Add(new PageModel { Page = i, Enable = CurrentPage == i, Text = $"{i}" });
 
-        var linkNextEnable = CurrentPage != TotalPages;
+        var linkNextEnable = CurrentPage < TotalPages;
         var linkNextPage = CurrentPage + 1;
         Links.Add(new PageModel{Text = "Next",Page = linkNextPage,Enable = linkNextEnable});
-
     }
 
     private async Task InternalSelectedPage(PageModel pageModel)
     {
-        if (pageModel.Page == CurrentPage || pageModel.Page == 0)  return;      
+        if (pageModel.Page == CurrentPage || pageModel.Page == 0 ||pageModel.Page > TotalPages)  return;      
 
         await SelectedPage.InvokeAsync(pageModel.Page);
     }

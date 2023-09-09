@@ -148,7 +148,6 @@ else
     
     private async Task SelectedPage(int page)
     {
-        if (page == totalPages + 1) return;
         currentPage = page;
         await LoadAsync(page);
     }
