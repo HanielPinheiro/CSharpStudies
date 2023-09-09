@@ -2,8 +2,18 @@
 
 <PageTitle>Hani's CRUD System</PageTitle>
 
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <p>Estas autenticado y autorizado, @context.User.Identity?.Name</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>No estas autorizado</p>
+    </NotAuthorized>
+</AuthorizeView>
+
 <h1>Need to betterize:</h1>
 
-- Access to data in DB, is taking too much time
-- Reduce the number o pages. The design is the same, only the content change, try do pages for design and pages or elements for control
+- Access to data in DB, is taking too much time<br />
+- Reduce the number o pages. The design is the same, only the content change, try do pages for design and pages or elements for control<br />
 

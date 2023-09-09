@@ -1,6 +1,7 @@
 ﻿@page "/states/{CountryId:int}"
 @inject IRepository repository
 @inject SweetAlertService alert
+@attribute [Authorize(Roles = "Admin")]
 
 @if (country is null)
 {
