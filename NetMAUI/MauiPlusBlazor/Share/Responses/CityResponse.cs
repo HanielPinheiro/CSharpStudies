@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Shared.Responses
+namespace Share.Responses
 {
     public class CityResponse
     {

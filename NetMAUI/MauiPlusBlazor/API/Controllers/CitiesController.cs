@@ -1,10 +1,8 @@
 ﻿using API.Data;
-using API.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Share.DTOs;
 using Share.Entities;
-using System.Linq;
 
 namespace API.Controllers
 {
