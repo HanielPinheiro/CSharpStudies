@@ -1,7 +1,7 @@
 ﻿using Share.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Share.DTOs
+namespace Share.DTO
 {
     public class UserDTO : User
     {

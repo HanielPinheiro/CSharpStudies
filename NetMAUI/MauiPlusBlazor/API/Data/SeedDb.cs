@@ -33,6 +33,9 @@ namespace API.Data
             var user = await _userHelper.GetUserAsync(email);
             if (user == null)
             {
+                var city = await _context.Cities.FirstOrDefaultAsync(x => x.Name == "Medellín");
+                if (city == null) city = await _context.Cities.FirstOrDefaultAsync();                
+
                 user = new User
                 {
                     FirstName = firstName,
@@ -48,6 +51,9 @@ namespace API.Data
 
                 await _userHelper.AddUserAsync(user, "MagiClickApps!123");
                 await _userHelper.AddUserToRoleAsync(user, userType.ToString());
+
+                var token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
+                await _userHelper.ConfirmEmailAsync(user, token);
             }
 
             return user;

@@ -1,5 +1,5 @@
-﻿namespace Share.DTOs
-{
+﻿namespace Share.DTO
+{ 
     public class TokenDTO
     {
         public string Token { get; set; } = null!;

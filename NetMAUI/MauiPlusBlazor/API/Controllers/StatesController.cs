@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Share.DTOs;
+using Share.DTO;
 using Share.Entities;
 
 namespace API.Controllers
@@ -20,6 +20,8 @@ namespace API.Controllers
             _context = context;
         }
 
+        #region CRUD
+
         [Route("create")]
         [HttpPost]
         public async Task<ActionResult> InsertItem(State state)
@@ -35,25 +37,6 @@ namespace API.Controllers
                 if (ex.InnerException!.Message.Contains("duplicate")) 
                     return BadRequest($"Already exists a {nameof(State)} with his name");
 
-                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
-            }
-        }
-
-        [Route("retrieveAll/{CountryId:int}")]
-        [HttpPost]
-        public async Task<IActionResult> RetrieveItens([FromQuery] PaginationDTO pagination, int CountryId)
-        {
-            try
-            {
-                var queryable = _context.States.Where(x => x.CountryId == CountryId).Include(x => x.Cities!).AsQueryable();
-
-                if (!string.IsNullOrWhiteSpace(pagination.Filter))
-                    queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
-
-                return Ok(await queryable.Paginate(pagination).ToListAsync());
-            }
-            catch (Exception ex)
-            {
                 return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
             }
         }
@@ -76,26 +59,24 @@ namespace API.Controllers
             }
         }
 
-        [Route("totalPages/{CountryId:int}")]
+        [Route("retrieveAll/{CountryId:int}")]
         [HttpPost]
-        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination, int CountryId)
+        public async Task<IActionResult> RetrieveItens([FromQuery] PaginationDTO pagination, int CountryId)
         {
             try
             {
-                var query = _context.States.Where(x => x.CountryId == CountryId).AsQueryable();
-                
-                if (!string.IsNullOrWhiteSpace(pagination.Filter)) 
-                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
-               
-                double count = await query.CountAsync();
-                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
-                return Ok(totalPages);
+                var queryable = _context.States.Where(x => x.CountryId == CountryId).Include(x => x.Cities!).AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))
+                    queryable = queryable.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+
+                return Ok(await queryable.Paginate(pagination).ToListAsync());
             }
             catch (Exception ex)
             {
                 return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
             }
-        }
+        }    
 
         [Route("update")]
         [HttpPut]
@@ -132,6 +113,40 @@ namespace API.Controllers
                 return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
             }
         }
+
+        #endregion
+
+        #region Others
+        
+        [Route("totalPages/{CountryId:int}")]
+        [HttpPost]
+        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination, int CountryId)
+        {
+            try
+            {
+                var query = _context.States.Where(x => x.CountryId == CountryId).AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))
+                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+
+                double count = await query.CountAsync();
+                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
+                return Ok(totalPages);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("combo/{countryId:int}")]
+        public async Task<ActionResult> GetCombo(int countryId)
+        {
+            return Ok(await _context.States.Where(x => x.CountryId == countryId).ToListAsync());
+        }
+
+        #endregion
 
     }
 }

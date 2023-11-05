@@ -1,4 +1,4 @@
-﻿namespace Share.DTOs
+﻿namespace Share.DTO
 {
     public class PaginationDTO
     {

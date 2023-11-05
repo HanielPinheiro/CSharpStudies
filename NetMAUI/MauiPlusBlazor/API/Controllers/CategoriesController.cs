@@ -19,6 +19,8 @@ namespace API.Controllers
             _context = context;
         }
 
+        #region CRUD
+
         [Route("create")]
         [HttpPost]
         public async Task<ActionResult> InsertItem(Categorie categorie)
@@ -106,5 +108,6 @@ namespace API.Controllers
             }
         }
 
+        #endregion
     }
 }

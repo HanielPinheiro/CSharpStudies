@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Share.DTOs;
+using Share.DTO;
 using Share.Entities;
 
 namespace API.Controllers
@@ -19,6 +19,8 @@ namespace API.Controllers
         {
             _context = context;
         }
+
+        #region CRUD
 
         [Route("create")]
         [HttpPost]
@@ -77,27 +79,6 @@ namespace API.Controllers
             }
         }
 
-        [Route("totalPages")]
-        [HttpPost]
-        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination)
-        {
-            try
-            {
-                var query = _context.Countries.AsQueryable();
-                
-                if (!string.IsNullOrWhiteSpace(pagination.Filter))                
-                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
-
-                double count = await query.CountAsync();
-                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
-                return Ok(totalPages);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
-            }
-        }
-
         [Route("update")]
         [HttpPut]
         public async Task<ActionResult> PutAsync(Country country)
@@ -134,5 +115,38 @@ namespace API.Controllers
             }
         }
 
+        #endregion
+
+        #region Others
+
+        [Route("totalPages")]
+        [HttpPost]
+        public async Task<IActionResult> GetTotalPages([FromQuery] PaginationDTO pagination)
+        {
+            try
+            {
+                var query = _context.Countries.AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(pagination.Filter))
+                    query = query.Where(x => x.Name.ToLower().Contains(pagination.Filter.ToLower()));
+
+                double count = await query.CountAsync();
+                double totalPages = Math.Ceiling(count / pagination.RecordsNumber);
+                return Ok(totalPages);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message} - {ex.InnerException!.Message}");
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("combo")]
+        public async Task<ActionResult> GetCombo()
+        {
+            return Ok(await _context.Countries.ToListAsync());
+        }
+
+        #endregion
     }
 }

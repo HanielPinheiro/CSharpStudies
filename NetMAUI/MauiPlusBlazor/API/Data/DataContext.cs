@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Share.DTOs;
+using Share.DTO;
 using Share.Entities;
 
 namespace API.Data
@@ -13,12 +13,14 @@ namespace API.Data
 
         public DbSet<City> Cities { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Categorie> Categories { get; set; }
+        public DbSet<Country> Countries { get; set; }        
+        public DbSet<Categorie> Categories { get; set; }        
+        public DbSet<Blob> Blobs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Blob>().HasIndex(x => x.Name).IsUnique();
             modelBuilder.Entity<City>().HasIndex("StateId", "Name").IsUnique();
             modelBuilder.Entity<State>().HasIndex("CountryId", "Name").IsUnique();
             modelBuilder.Entity<Country>().HasIndex(x => x.Name).IsUnique();

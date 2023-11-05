@@ -18,6 +18,7 @@ namespace Web.Repositories
         }
 
         #region Post
+
         public async Task<HttpResponseWrapper<TResponse>> Post<TResponse>(string url)
         {
             var messageContent = new StringContent(string.Empty, Encoding.UTF8, "application/json");
