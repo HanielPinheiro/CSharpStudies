@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{74A63710-75E1-4BDC-A035-7BC721E769BD}</ProjectGuid>
+    <RootNamespace>FaceLandmarkingTest</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>FaceLandmarking</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\..\..\include</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world331.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app\ui\video-capture.hpp" />
+    <ClInclude Include="feature-extraction\basic-filters.hpp" />
+    <ClInclude Include="io\annotation-io.hpp" />
+    <ClInclude Include="mask\mask-transformation\mask-averager.hpp" />
+    <ClInclude Include="preprocessing\face-finder.hpp" />
+    <ClInclude Include="preprocessing\mask-frame.hpp" />
+    <ClInclude Include="learning\decision.hpp" />
+    <ClInclude Include="feature-extraction\face-color-detector.hpp" />
+    <ClInclude Include="feature-extraction\feature-extractor.hpp" />
+    <ClInclude Include="feature-extraction\filter.hpp" />
+    <ClInclude Include="feature-extraction\histogram.hpp" />
+    <ClInclude Include="feature-extraction\hsv-image.hpp" />
+    <ClInclude Include="feature-extraction\image-preprocessor.hpp" />
+    <ClInclude Include="app\features.hpp" />
+    <ClInclude Include="learning\autoencoder-processing.hpp" />
+    <ClInclude Include="learning\average-mask-processing.hpp" />
+    <ClInclude Include="learning\regressor-processing.hpp" />
+    <ClInclude Include="regression\mask-regressor.hpp" />
+    <ClInclude Include="face-landmarker.hpp" />
+    <ClInclude Include="regression\regressors\nn-regressor.hpp" />
+    <ClInclude Include="regression\regressors\tree-mask-regressor.hpp" />
+    <ClInclude Include="regression\regressors\tree-regressor.hpp" />
+    <ClInclude Include="mask\face-mask.hpp" />
+    <ClInclude Include="regression\mask-autoencoder.hpp" />
+    <ClInclude Include="mask\mask-transformation\mask-interpolator.hpp" />
+    <ClInclude Include="mask\mask-transformation\mask-normalizer.hpp" />
+    <ClInclude Include="mask\mask-transformation\mask-scaler.hpp" />
+    <ClInclude Include="mask\mask-transformation\mask-transitioner.hpp" />
+    <ClInclude Include="math\angle.hpp" />
+    <ClInclude Include="math\offset.hpp" />
+    <ClInclude Include="math\point.hpp" />
+    <ClInclude Include="math\rect.hpp" />
+    <ClInclude Include="math\size.hpp" />
+    <ClInclude Include="math\vector.hpp" />
+    <ClInclude Include="io\autoencoder-example-io.hpp" />
+    <ClInclude Include="data\dataset-mirroring-iterator.hpp" />
+    <ClInclude Include="data\dataset.hpp" />
+    <ClInclude Include="io\features-io.hpp" />
+    <ClInclude Include="data\learning-example.hpp" />
+    <ClInclude Include="io\mask-io.hpp" />
+    <ClInclude Include="io\nn-oi.hpp" />
+    <ClInclude Include="io\image-io.hpp" />
+    <ClInclude Include="data\mask-file.hpp" />
+    <ClInclude Include="io\tree-io.hpp" />
+    <ClInclude Include="feature-extraction\image-color-test.hpp" />
+    <ClInclude Include="app\video.hpp" />
+    <ClInclude Include="app\examples.hpp" />
+    <ClInclude Include="app\ui\face-ui.hpp" />
+    <ClInclude Include="app\ui\mask-ui.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
