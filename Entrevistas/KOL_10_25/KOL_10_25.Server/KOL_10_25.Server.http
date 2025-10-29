@@ -1,6 +1,0 @@
-@KOL_10_25.Server_HostAddress = http://localhost:5160
-
-GET {{KOL_10_25.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

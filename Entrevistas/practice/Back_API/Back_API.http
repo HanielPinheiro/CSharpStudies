@@ -1,0 +1,39 @@
+@Back_API_HostAddress = https://localhost:7140
+
+GET {{Back_API_HostAddress}}/todoitems/
+Accept: application/json
+
+###
+
+GET {{Back_API_HostAddress}}/todoitems/complete
+
+###
+
+@id=3
+GET {{Back_API_HostAddress}}/todoitems/{{id}}
+
+###
+
+POST {{Back_API_HostAddress}}/todoitems
+Content-Type: application/json
+
+{
+  "name":"walk dog",
+  "isComplete":false
+}
+
+###
+
+PUT {{Back_API_HostAddress}}/todoitems/{{id}}
+Content-Type: application/json
+
+{
+  "name":"outro nome",
+  "isComplete":false
+}
+
+###
+
+DELETE {{Back_API_HostAddress}}/todoitems/{{id}}
+
+###
