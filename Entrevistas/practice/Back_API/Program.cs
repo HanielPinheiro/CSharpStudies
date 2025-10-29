@@ -11,41 +11,60 @@ var app = builder.Build();
 
 var todoItems = app.MapGroup("/todoitems");
 
-todoItems.MapGet("/", async (TodoDAO inMemoryDao) => await inMemoryDao.Todos.ToListAsync());
-todoItems.MapGet("/complete", async (TodoDAO db) => await db.Todos.Where(t => t.IsComplete).ToListAsync());
-todoItems.MapGet("/{id}", async (int id, TodoDAO inMemoryDao) => ( await inMemoryDao.Todos.FindAsync(id) ) is Todo todo ? Results.Ok(todo) : Results.NotFound());
+todoItems.MapGet("/", GetAllTodos);
+todoItems.MapGet("/complete", GetCompleteTodos);
+todoItems.MapGet("/{id}", GetTodo);
 
-todoItems.MapPost("/", async (Todo todo, TodoDAO dao) =>
+todoItems.MapPost("/", CreateTodo);
+todoItems.MapPut("/{id}", UpdateTodo);
+todoItems.MapDelete("/{id}", DeleteTodo);
+
+app.Run();
+
+
+static async Task<IResult> GetAllTodos(TodoDAO dao)
+{
+    return TypedResults.Ok(await dao.Todos.ToArrayAsync());
+}
+static async Task<IResult> GetCompleteTodos(TodoDAO dao)
+{
+    return TypedResults.Ok(await dao.Todos.Where(t => t.IsComplete).ToListAsync());
+}
+
+static async Task<IResult> GetTodo(int id, TodoDAO dao)
+{
+    return (await dao.Todos.FindAsync(id)) is Todo todo ? Results.Ok(todo) : Results.NotFound();
+}
+
+static async Task<IResult> CreateTodo(Todo todo, TodoDAO dao)
 {
     dao.Todos.Add(todo);
     await dao.SaveChangesAsync();
-    return Results.Created($"/todoitems/{todo.Id}", todo);
-});
+    return TypedResults.Created($"/todoitems/{todo.Id}", todo);
+}
 
-todoItems.MapPut("/{id}", async (int id, Todo inputTodo, TodoDAO inMemoryDAO) =>
+static async Task<IResult> UpdateTodo(int id, Todo inputTodo, TodoDAO dao)
 {
-    Todo? todo = await inMemoryDAO.Todos.FindAsync(id);
+    Todo? todo = await dao.Todos.FindAsync(id);
 
     if (todo is null) return Results.NotFound();
 
     todo.Name = inputTodo.Name;
     todo.IsComplete = inputTodo.IsComplete;
 
-    await inMemoryDAO.SaveChangesAsync();
+    await dao.SaveChangesAsync();
 
-    return Results.NoContent();
-});
+    return TypedResults.NoContent();
+}
 
-todoItems.MapDelete("/{id}", async (int id, TodoDAO inMemoryDao) =>
+static async Task<IResult> DeleteTodo(int id, TodoDAO dao)
 {
-    if (await inMemoryDao.Todos.FindAsync(id) is Todo todo)
+    if (await dao.Todos.FindAsync(id) is Todo todo)
     {
-        inMemoryDao.Todos.Remove(todo);
-        await inMemoryDao.SaveChangesAsync();
-        return Results.NoContent();
+        dao.Todos.Remove(todo);
+        await dao.SaveChangesAsync();
+        return TypedResults.NoContent();
     }
 
-    return Results.NotFound();
-});
-
-app.Run();
+    return TypedResults.NotFound();
+}
